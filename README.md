@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,7 +22,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-=======
+
 # Refer_Me_Project
->>>>>>> 3508077327ce62385f7ce7daf562987f3d1edbca
+
