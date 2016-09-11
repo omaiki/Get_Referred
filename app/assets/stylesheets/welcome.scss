@@ -1,4 +1,53 @@
 
-.jumbotron {
-  background-image: image-url()
+.jumbotron h1 {
+  position: relative;
+  text-align: right;
+  margin-right: 5%;
 }
+
+
+
+/////////////////////////////
+////////// welcome //////////
+/////////////////////////////
+
+#outline {
+  box-shadow: 1px 1px 1px #9E9E9E;
+  border:0.1em solid #EEEEEE;
+  padding-bottom: -100px;
+  display: inline-block;
+}
+
+#sign-up {
+  margin-bottom: -30px;
+}
+
+.welcome-info {
+  padding-bottom: -10px;
+}
+
+.info-text {
+  padding: 0px 10px 10px 10px;
+  font: 'Source Sans Pro', sans-serif;
+  font-weight: bolder;
+}
+
+.welcome-icon {
+  padding-top: 10px
+}
+
+.middle-line {
+  border-right: 1px solid #ff4056;
+  margin: 15px 0px 25px 0px;
+}
+
+.middle-adjust {
+  margin: 15px 0px 25px 0px;
+}
+
+
+
+
+
+
+
