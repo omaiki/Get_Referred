@@ -14,11 +14,55 @@
  *= require_self
  */
 
- @import 'bootstrap-sprockets';
- @import 'bootstrap';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 
 
- .navbar {
+.navbar {
   padding-bottom: 0;
   margin-bottom: 0;
  }
+
+.container{
+    height: 10vh;
+    padding-top: 2%;
+    background-color: #d6f5f5;
+ }
+
+.left {
+  text-align: left;
+}
+
+ }
+
+
+ ///////////////////////////////
+////////// footer ////////////
+/////////////////////////////
+#footer {
+  height: 6vh;
+  background-color:#ff4056;
+  color: #ffffff;
+  line-height: 6vh;
+  font-weight: 300;
+}
+
+#footer-text {
+  margin: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
