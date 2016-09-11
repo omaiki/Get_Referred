@@ -10,9 +10,10 @@
   </head>
 
   <body>
-
-    <%= render partial: ".layouts/navbar"%>
+  <% if !(current_page?(controller:'welcome', action: 'index')) %>
+  <% end %>
+    <%= render partial: "./layouts/navbar"%>
     <%= yield %>
-    <%render partial: ".layouts/footer"%>
+    <%=render partial: "./layouts/footer"%>
   </body>
 </html>
