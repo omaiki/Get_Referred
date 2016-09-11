@@ -14,7 +14,7 @@ module ReferMeProject
     config.generators do |g|
        g.helper false
        g.test_framework false
-       g.assets false
+       g.assets.coffee false
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
