@@ -12,7 +12,7 @@ module ReferMeProject
   class Application < Rails::Application
 
     config.generators do |g|
-       g.helper_specs false
+       g.helper false
        g.test_framework false
        g.assets false
     end
