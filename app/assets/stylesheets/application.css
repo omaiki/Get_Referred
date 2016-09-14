@@ -23,17 +23,16 @@
   margin-bottom: 0;
  }
 
-.container{
-    height: 10vh;
-    padding-top: 2%;
-    background-color: #d6f5f5;
- }
+section{
+  padding-bottom: 5%;
+  min-height: 85vh;
+}
 
 .left {
   text-align: left;
 }
 
- }
+
 
 
  ///////////////////////////////
