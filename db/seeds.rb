@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#create 10 users, with 1 profile each and 3 employments attached to those profiles.
 require 'ffaker'
 
 10.times do
@@ -32,6 +33,23 @@ require 'ffaker'
 
     new_profile.save
     new_user.profile = new_profile
+
+
+    3.times do
+      new_employment = Employment.new
+      new_employment.industry = FFaker::Education.major
+      new_employment.title = FFaker::Company.position
+      new_employment.company = FFaker::Company.name
+      new_employment.city = FFaker::Address.city
+      new_employment.state = FFaker::AddressUS.state
+      new_employment.summary = FFaker::HipsterIpsum.paragraphs(3)
+      new_employment.startdate = FFaker::Time.date
+      new_employment.enddate = FFaker::Time.date
+
+      new_employment.save
+      new_profile.employments.push new_employment
+    end
+
   end
 
 end
