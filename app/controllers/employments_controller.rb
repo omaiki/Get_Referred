@@ -35,4 +35,5 @@ class EmploymentsController < ApplicationController
     @employment = Employment.find(params[:id])
     @employment.update_attributes(employment_params)
   end
+
 end
