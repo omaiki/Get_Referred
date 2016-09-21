@@ -4,11 +4,15 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.string :first_name
       t.string :last_name
-      t.string :address
+      t.string :role
       t.string :city
       t.string :state
-      t.string :phone
+      t.string :linkedin
       t.string :image
+      t.string :seeker
+      t.string :company
+      t.string :department
+      t.string :skills
       t.text :bio
 
       t.timestamps null: false
