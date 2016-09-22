@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914035416) do
+ActiveRecord::Schema.define(version: 20160921040205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,37 @@ ActiveRecord::Schema.define(version: 20160914035416) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer  "friendship_id"
+    t.datetime "date"
+    t.string   "status"
+    t.string   "location"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "author"
+    t.integer  "user_id"
+    t.integer  "friendship_id"
+    t.string   "job_url"
+    t.string   "role"
+    t.text     "body"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -41,6 +72,15 @@ ActiveRecord::Schema.define(version: 20160914035416) do
     t.string   "phone"
     t.string   "image"
     t.text     "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "message_id"
+    t.text     "content"
+    t.string   "author"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
