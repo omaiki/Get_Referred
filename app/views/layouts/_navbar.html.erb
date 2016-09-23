@@ -1,8 +1,9 @@
-
 <nav class="navbar navbar-default main-nav">
   <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
 
-     <div class="navbar-header">
+    <!-- pull code for hanburger css up top to change. -->
+    <div class="navbar-header">
       <button type="button" id="hamburger" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span id="main-toggle" class="icon-bar"></span>
@@ -15,13 +16,12 @@
     <div class="collapse navbar-collapse">
       <ul id="center-nav" class="nav navbar-nav">
         <!-- <li class="active"><a href="/dashboard">Dashboard <span class="sr-only">(current)</span></a></li> -->
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Messages</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/profiles/">Search</a></li>
+        <li><a href="/messages/">Messages</a></li>
         <li><%= link_to "Profile", profile_path(@current_user.profile.id) %></li>
         <li><a href="#">Account</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div> <!-- container div -->
-
+  </div><!-- /.container-fluid -->
 </nav>

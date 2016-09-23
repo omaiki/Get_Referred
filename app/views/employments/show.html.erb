@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-xs-3">
         <p><%= @employment.city%>,<%= @employment.state%></p>
-        <p><%= @employment.startdate %><br>
-        <%= @employment.enddate %></p>
+        <p><%= @employment.start_date %><br>
+        <%= @employment.end_date %></p>
         <%= @employment.status %>
          <%= button_to "Edit Job", edit_employment_path, class:" btn", method: :get %>
           <%= button_to "Delete Job", employment_path, class:" btn", method: :delete %>
