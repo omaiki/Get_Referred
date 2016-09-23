@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :messages
   has_many :events
 
-  validates :email, uniqueness: true,
+  validates :email, uniqueness: true
 
 end
