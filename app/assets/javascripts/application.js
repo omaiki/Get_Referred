@@ -5,7 +5,7 @@
 // or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
+// compiled file.
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
@@ -17,3 +17,25 @@
 //= require bootstrap-material-design
 //= require_tree .
 
+
+$(function() {
+  $("#profiles th a, #profiles .pagination a").on("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#profiles_search input").on(function() {
+    $.get($("#profiles_search").attr("action"), $("#profiles_search").serialize(), null, "script");
+    return false;
+  });
+});
+
+// attach class "active" on click to remove default Bootstrap active button styling
+$('.btn-primary').click(function() {
+  $(this).toggleClass('active');
+});
+
+
+// attach class "active" on click to remove default Bootstrap active button styling
+$('.btn-danger').click(function() {
+  $(this).toggleClass('active');
+});
