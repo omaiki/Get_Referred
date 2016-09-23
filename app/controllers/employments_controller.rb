@@ -16,7 +16,7 @@ class EmploymentsController < ApplicationController
 
   def create
     #need to refactor this so you can use params mroe easily
-    employment_params = params.require(:employment).permit(:profile_id, :industry, :title, :company, :companyimg, :city, :state, :summary, :start_date, :end_date, :status)
+    employment_params = params.require(:employment).permit(:profile_id, :industry, :title, :company, :companyimg, :city, :state, :summary, :startdate, :enddate, :status)
     employment = Employment.create(employment_params)
     if @employment.save
       redirect_to @employment
@@ -31,7 +31,7 @@ class EmploymentsController < ApplicationController
   end
 
   def update
-    employment_params = params.require(:employment).permit(:profile_id, :industry, :title, :company, :companyimg, :city, :state, :summary, :start_date, :end_date, :status)
+    employment_params = params.require(:employment).permit(:profile_id, :industry, :title, :company, :companyimg, :city, :state, :summary, :startdate, :enddate, :status)
     @employment = Employment.find(params[:id])
     @employment.update_attributes(employment_params)
   end

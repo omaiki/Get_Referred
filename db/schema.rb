@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160921040205) do
     t.string   "city"
     t.string   "state"
     t.string   "summary"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.date     "startdate"
+    t.date     "enddate"
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20160921040205) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "firstname"
+    t.string   "lastname"
     t.string   "role"
     t.string   "city"
     t.string   "state"
