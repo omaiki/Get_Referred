@@ -22,8 +22,8 @@ require 'ffaker'
   1.times do
 
     new_profile = Profile.new
-    new_profile.first_name = FFaker::Name.name
-    new_profile.last_name = FFaker::Name.name
+    new_profile.firstname = FFaker::Name.name
+    new_profile.lastname = FFaker::Name.name
     new_profile.address = FFaker::Address.street_address
     new_profile.city = FFaker::Address.city
     new_profile.state = FFaker::AddressUS.state

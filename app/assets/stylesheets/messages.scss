@@ -1,3 +1,20 @@
-// Place all the styles related to the Messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+img {
+	border-radius: 50%;
+	width: 100%;
+}
+
+.row {
+	clear: both;
+}
+
+#originalmessage{
+	border: solid;
+	border-width: 1px;
+	border-color: #000;
+	border-radius: 5px;
+
+}
+
+.field{
+	width: 100%;
+}

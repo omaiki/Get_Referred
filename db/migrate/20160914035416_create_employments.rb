@@ -9,8 +9,8 @@ class CreateEmployments < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :state
       t.string :summary
-      t.date :start_date
-      t.date :end_date
+      t.date :startdate
+      t.date :enddate
       t.string :status
 
       t.timestamps null: false
