@@ -32,7 +32,9 @@
 	.jumbotron {
 		background-image: image-url("welcome_candidate.jpg");
 	  width: 100%;
-		color: #ff4056;
+		color: white;
+		text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px, #000 0px 0px 1px,
+             #000 0px 0px 1px, #000 0px 0px 1px,   #000 0px 0px 1px;
 		height: 50vh;
 		background-size: cover;
 		background-repeat: no-repeat;
