@@ -119,6 +119,28 @@
       <% for friendship in Friendship.where(status: "confirm").where('(friend_id=?) OR (user_id=?)', current_user.id, current_user.id) %>
       <% p "friendship" %>
       <% p friendship %>
+
+       <div class="row notifications">
+        <div class="col-xs-3 center" id="avatar">
+          <%= link_to profile_path(friendship.user.profile) do %>
+            <%= image_tag friendship.user.profile.image %>
+          <% end %>
+        </div>
+        <div class="col-xs-7">
+          <h3><%=friendship.user.profile.full_name %> would like to connect</h3>
+          <p class="timestamps"><%= time_ago_in_words (friendship.created_at) %> ago</p>
+        <!-- *** TODO limit body to 4 lines of text with accordion to see more -->
+          <!-- <p>Body of message</p> -->
+          <p><%=friendship.user.profile.role %></p>
+        <!-- show only if provided -->
+          <!-- <p>Job URL</p> -->
+        </div>
+        <div class="col-xs-2 friendship-btn">
+          <%= button_to "Message", friendship, :class =>"btn btn-primary center-block", :method => :put %>
+         <br>
+          <%= link_to "View Profile", profile_path(friendship.user.profile), class:"btn btn-danger search" %>
+        </div>
+      </div>
       <!-- print out friendship ids. Save them in array. Do message query for loop iterating over id array Message.where('user_id=?', friendship.id) -->
       <!-- this loop takes the friendships that were confirmed that have the current user in them, and find all the messages with that id in the firdship_id column of the message -->
         <% for message in Message.where(friendship_id: friendship) %>
