@@ -44,7 +44,7 @@
             <% end %>
           </div>
           <div class="col-xs-7">
-            <h3>Awaiting connection response from <%=friendship.friend.profile.full_name %></h3>
+            <h3>Awaiting response from <%=friendship.friend.profile.full_name %></h3>
             <p class="timestamps"><%= time_ago_in_words (friendship.created_at) %> ago</p>
           <!-- *** TODO limit body to 4 lines of text with accordion to see more -->
             <!-- <p>Body of message</p> -->
@@ -199,7 +199,7 @@
           <% end %>
         </div>
         <div class="col-xs-7">
-          <h3>Awaiting connection response from <%=friendship.friend.profile.full_name %></h3>
+          <h3>Awaiting response from <%=friendship.friend.profile.full_name %></h3>
           <p class="timestamps"><%= time_ago_in_words (friendship.created_at) %> ago</p>
         <!-- *** TODO limit body to 4 lines of text with accordion to see more -->
           <!-- <p>Body of message</p> -->
@@ -219,7 +219,6 @@
       <% p "friendship" %>
       <% p friendship %>
       <% if friendship[:friend_id] == current_user.id %>
-
 
         <div class="row notifications">
           <div class="col-xs-3 center" id="avatar">
