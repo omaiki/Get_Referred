@@ -18,7 +18,7 @@
                   <%= image_tag message.user.profile.image %>
                   <%= link_to "see profile", message.user.profile %>
                 </div>
-                <div class="col-xs-7"><a href="#" onclick="toggle_visibility('message<%=message.id %>');">
+                <div class="col-xs-7"><a href="/messages/<%=message.id%>" onclick="toggle_visibility('message<%=message.id %>');">
                   <h3><%= message.author %></h3>
                   <h4><%= message.title %></h4>
 
