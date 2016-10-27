@@ -22,7 +22,7 @@
           <% if logged_in? %>
           <a class="btn btn-primary" href="/dashboard/">Go to Dashboard</a>
           <% else %>
-          <button data-toggle="modal" data-target="#createUser" id="sign-up">Sign-Up</button>
+          <button data-toggle="modal" data-target="#createUser" id="sign-up">Request Invite</button>
           <% end %>
         </div>
       </div>
@@ -79,19 +79,16 @@
               <%= f.label :password %><br>
               <%= f.password_field :password %>
               </br>
-              <br>
-              <div class="actions">
-              <%= button_tag "Request Invite", :class => 'submit-button'%>
-              <%= button_tag link_to "Cancel", root_path %>
-              </div>
               </br>
           <% end %>
         </div>
+
         <div class="modal-footer">
         <button class="btn btn-success"
-            data-toggle="modal" data-target="#logUser" data-dismiss="modal">Log In</button>
+            data-toggle="modal" data-target="#betaUser" data-dismiss="modal">Sign-Up</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         </div>
+
       </div>
     </div>
   </div>
@@ -122,6 +119,28 @@
           <button class="btn btn-success"
               data-toggle="modal" data-target="#createUser" data-dismiss="modal">Sign Up</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Heroku Demo Modal  -->
+
+  <div class="modal fade" id="betaUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <br><h4 class="modal-title" id="myModalLabel">Thank you for signing up!</h4>
+          <h3> We will reach out to you with more information in the upcoming future. </h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+         <!--  <button class="btn btn-success"
+              data-toggle="modal" data-target="#createUser" data-dismiss="modal">Sign Up</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
         </div>
       </div>
     </div>
