@@ -79,7 +79,11 @@
               <%= f.label :password %><br>
               <%= f.password_field :password %>
               </br>
-              <%= f.submit "Request Invite" %>
+              <br>
+              <div class="actions">
+              <%= button_tag "Request Invite", :class => 'submit-button'%>
+              <%= button_tag link_to "Cancel", root_path %>
+              </div>
               </br>
           <% end %>
         </div>
@@ -109,8 +113,8 @@
               <%= password_field_tag :password, nil, placeholder: 'password' %>
             </div></br>
             <div class="actions">
-              <%= button_tag link_to "Cancel", root_path %>
               <%= button_tag "Log In", :class => 'submit-button'%>
+              <%= button_tag link_to "Cancel", root_path %>
             </div>
           <% end %>
         </div>
