@@ -30,6 +30,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-material-design'
 
 gem 'will_paginate'
+gem 'mailboxer'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
