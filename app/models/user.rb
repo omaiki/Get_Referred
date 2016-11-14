@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
+  acts_as_messageable
+
   has_one :profile
   has_many :friendships
   has_many :friends, :through => :friendships, :class_name => "User"
