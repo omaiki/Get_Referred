@@ -524,6 +524,13 @@ button:active {
 	font-size: 20pt;
 }
 
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+ }
+
 //////////////////////////////////////////////////
 ////////// profile show & search results ////////
 ////////////////////////////////////////////////
