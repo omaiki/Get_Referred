@@ -1,5 +1,7 @@
 class ConversationsController < ApplicationController
 
+  before_action :get_mailbox
+
   def index
     @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
   end

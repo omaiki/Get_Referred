@@ -18,7 +18,7 @@
         <!-- <li class="active"><a href="/dashboard">Dashboard <span class="sr-only">(current)</span></a></li> -->
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/profiles/">Search</a></li>
-        <li><a href="/messages/">Messages</a></li>
+        <li><%= link_to 'Messages', conversations_path %></li>
         <li><%= link_to "Profile", profile_path(@current_user.profile.id) %></li>
         <li><a href="#">Account</a></li>
       </ul>
