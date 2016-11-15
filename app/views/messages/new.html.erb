@@ -1,4 +1,7 @@
-<% page_header "Start Conversation" %>
+<section>
+  <div class="container">
+  <div class="col-xs-10 col-xs-offset-1">
+<center><% page_header "Start Conversation" %></center>
 
 <%= form_tag messages_path, method: :post do %>
   <div class="form-group">
@@ -13,8 +16,11 @@
 
   <div class="form-group">
     <%= label_tag 'recipients', 'Choose recipients' %>
-    <%= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control' %>
+    <%= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control chosen-it' %>
   </div>
 
   <%= submit_tag 'Send', class: 'btn btn-primary' %>
 <% end %>
+</div>
+</div>
+</section>
