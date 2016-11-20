@@ -16,6 +16,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.text :bio
       t.text :work_history
       t.text :portfolio
+      t.text :criteria_question
 
       t.timestamps null: false
     end

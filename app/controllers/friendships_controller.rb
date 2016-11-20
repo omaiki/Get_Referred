@@ -2,9 +2,16 @@ class FriendshipsController < ApplicationController
   include FriendshipsHelper
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+    @friend = @friendship.friend
+    @profile = @friendship.friend.profile
+    p @profile
+    p "****" * 80
     if @friendship.save
       flash[:notice] = "Added friend."
       friend_request
+
+      # render new_friend form
+      # user will complete form and be redirected to dashboard_index_path
       redirect_to dashboard_index_path
     else
       flash[:error] = "Unable to add friend."
@@ -27,7 +34,6 @@ class FriendshipsController < ApplicationController
     friend_request_accept
     flash[:notice] = "Accepted friendship."
     redirect_to dashboard_index_path
-
 
   end
 end
