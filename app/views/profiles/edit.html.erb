@@ -3,7 +3,11 @@
 <section>
 
   <div class="container">
-    <div class="col-xs-4 center">
+    <div class="row">
+
+    </div>
+    <div class="row push-down">
+      <div class="col-xs-12 left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
           <%= image_tag @profile.image, class:"profile-image", id:"edit-image" %>
           <%else%>
@@ -12,22 +16,20 @@
           <%end%>
           <%= form_for @profile do |p| %>
           <%= p.label "Image URL" %>
-          <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
+         <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
           <br>
       </div>
-      <div class="col-xs-8 center seeker">
+
+      <div class="col-xs-6 left">
+        <h1>Edit Candidate Profile</h1>
+      </div>
+      <div class="col-xs-4 right">
         <h4><%= p.label "Status" %></h4>
         <p>Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %></p>
         <p>Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
         <br></p>
       </div><!-- end row -->
 
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>Edit Candidate Profile</h1>
-      </div>
-    </div>
-    <div class="row push-down">
 
   </div>
   <div class="row"> <!-- start remaining form fields -->
