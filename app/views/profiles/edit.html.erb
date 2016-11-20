@@ -3,11 +3,9 @@
 <section>
 
   <div class="container">
-    <div class="row">
 
-    </div>
     <div class="row push-down">
-      <div class="col-xs-12 left">
+      <div class="col-xs-12 center">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
           <%= image_tag @profile.image, class:"profile-image", id:"edit-image" %>
           <%else%>
@@ -15,23 +13,23 @@
           <h6>Please update your profile image.</h6>
           <%end%>
           <%= form_for @profile do |p| %>
-          <%= p.label "Image URL" %>
+          <div class="col-xs-12 center">
+          <%= p.submit "Add Photo", class: 'btn btn-danger' %>
+          </div>
+          <!--<%= p.label "Image URL" %>
          <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
-          <br>
+          <br> -->
       </div>
 
-      <div class="col-xs-6 left">
-        <h1>Edit Candidate Profile</h1>
+
+      <div class="col-xs-12 left">
+        <h2>Edit Candidate Profile</h2>
       </div>
-      <div class="col-xs-4 right">
-        <h4><%= p.label "Status" %></h4>
-        <p>Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %></p>
-        <p>Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
-        <br></p>
-      </div><!-- end row -->
+
+    </div> <!-- end row push down -->
 
 
-  </div>
+
   <div class="row"> <!-- start remaining form fields -->
       <div class="col-xs-3">
         <%= p.label "First name" %>
@@ -55,6 +53,7 @@
         <br>
       </div>
   </div><!-- end row -->
+
   <div class="row"> <!-- start remaining form fields -->
     <div class="col-xs-6">
         <%= p.label "Title" %>
@@ -67,41 +66,45 @@
         <br>
     </div>
 
-    </div><!-- end row -->
+  </div><!-- end row -->
+
+
+
   <div class="row">
-   <!--  <div class="col-xs-12">
-        <%= p.label "Skills" %>
-        <%= p.text_area :skills, placeholder: "Briefly describe your skillsets", class:'form-control' %>
-        <br>
-    </div> -->
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
+     <div class="col-xs-12">
         <%= p.label "Work history" %>
         <%= p.text_area :skills, class:'form-control' %>
         <br>
-    </div>
-    <div class="col-xs-6">
-      <%= p.label "LinkedIn" %>
-      <%= p.text_field :linkedin, placeholder: "URL to your linked in profile", class:'form-control' %>
-      <br>
-    </div>
+     </div>
      <div class="col-xs-6">
-      <%= p.label "Website" %>
-      <%= p.text_field :portfolio, placeholder: "URL to your personal website", class:'form-control' %>
-      <br>
-    </div>
+        <%= p.label "LinkedIn" %>
+        <%= p.text_field :linkedin, placeholder: "URL to your linked in profile", class:'form-control' %>
+        <br>
+     </div>
+     <div class="col-xs-6">
+        <%= p.label "Website" %>
+        <%= p.text_field :portfolio, placeholder: "URL to your personal website", class:'form-control' %>
+        <br>
+     </div>
   </div>
-  <div class="row rig">
-    <div class="col-xs-10 right">
+
+<div class="row rig">
+  <div class="col-xs-6 left">
+        <h4><%= p.label "Profile Type:" %></h4>
+        Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
+        Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
+      </div>
+    <div class="col-xs-3 right">
       <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
     </div>
-    <div class="col-xs-2 right">
+    <div class="col-xs-3 right">
       <%= p.submit "Update", class: 'btn btn-primary' %>
     </div>
-    <% end %>
+      <% end %>
   </div>
-  </div>
+
+</div>
+
 </section>
 
 <!-- if current user is a sourcer -->
