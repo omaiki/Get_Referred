@@ -129,8 +129,10 @@ ActiveRecord::Schema.define(version: 20161114090823) do
     t.string   "department"
     t.string   "skills"
     t.text     "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "work_history"
+    t.text     "portfolio"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "responses", force: :cascade do |t|
