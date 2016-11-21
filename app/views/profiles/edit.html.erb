@@ -14,13 +14,15 @@
       </div> -->
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
+          <div class='profile-pic center'>
           <%= image_tag @profile.image, class:"profile-image", id:"edit-image" %>
+          </div>
           <%else%>
           <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
           <h6>Please update your profile image.</h6>
           <%end%>
           <%= form_for @profile do |p| %>
-          <div class="col-xs-12 center">
+         <div class='profile-pic-button center'>
           <%= p.submit "Add Photo", class: 'btn btn-danger' %>
           </div>
           <!--<%= p.label "Image URL" %>
