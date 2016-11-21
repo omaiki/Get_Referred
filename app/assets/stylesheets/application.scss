@@ -77,6 +77,27 @@ background-color: #ffffff;  //Sets background hover color on navbar
   color: #ffffff; //Change active text color
 }
 
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: #ff4056;
+}
+
+.btn-group-vertical > .btn:last-child:not(:first-child) {
+	 background-color: #ff4056;
+	 border-color:  #ff4056;
+}
+
+a {
+color: black;
+
+}
+
+a:hover, a:focus {
+  color: black;
+  text-decoration: underline;
+}
+
+
+
 //////////////////////////////////////
 ////////// collapsed nav ////////////
 ////////////////////////////////////
