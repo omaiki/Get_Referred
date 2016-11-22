@@ -1,5 +1,12 @@
 class FriendshipsController < ApplicationController
   include FriendshipsHelper
+
+  def index
+  end
+
+  def new
+  end
+
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     @friend = @friendship.friend
@@ -11,8 +18,9 @@ class FriendshipsController < ApplicationController
       friend_request
 
       # render new_friend form
+      render :new
       # user will complete form and be redirected to dashboard_index_path
-      redirect_to dashboard_index_path
+      # redirect_to dashboard_index_path
     else
       flash[:error] = "Unable to add friend."
       redirect_to dashboard_index_path
