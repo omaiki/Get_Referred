@@ -1,5 +1,7 @@
 <section>
-<% page_header "Conversation" %>
+
+
+<div class='container'>
 
 <p>Chatting with
   <%= render 'conversations/participants', conversation: @conversation %>
@@ -35,5 +37,6 @@
   <%= submit_tag "Send Message", class: 'btn btn-primary' %>
 <% end %>
 
+</div>
 
 </section>

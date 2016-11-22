@@ -1,5 +1,8 @@
 <li class="list-group-item clearfix">
+  <div class="convo-link", style="font-size: 150%">
+  <p><%= render 'conversations/participants', conversation: conversation %> <%= conversation.receipts_for(current_user).last.message.sender.profile.firstname%> <%= conversation.receipts_for(current_user).last.message.sender.profile.lastname%> </p>
   <%= link_to conversation.subject, conversation_path(conversation) %>
+  </div>
 
   <div class="btn-group-vertical pull-right">
     <% if conversation.is_trashed?(current_user) %>
@@ -15,8 +18,8 @@
     <% end %>
   </div>
 
-  <p><%= render 'conversations/participants', conversation: conversation %></p>
 
+  <br>
   <p><%= conversation.last_message.body %>
     <small>(<span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small></p>
 </li>
