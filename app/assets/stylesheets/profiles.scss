@@ -103,9 +103,16 @@ td a:hover {
 
 .btn {
 	font-size: 11pt;
+	text-align: center;
 	margin: 5px;
 	width: 120px;
 }
+
+#search-btn {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
 
 .result-detail a {
 	text-decoration: none;
