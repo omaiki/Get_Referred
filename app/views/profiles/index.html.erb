@@ -96,7 +96,7 @@
                       <%= link_to "View Profile", profile_path(profile), class:"btn btn-danger search" %>
                       <br>
                       <!-- here I need to link to profile path and get their criteria question -->
-                      <%= link_to "Request Referral", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary search", id:'search-btn' %>
+                      <%= link_to "Request Referral", friendships_path(:friend_id => profile.user), :method => :get, class:"btn btn-primary search", id:'search-btn' %>
                     </td>
 
                   </tr>

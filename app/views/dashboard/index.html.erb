@@ -98,6 +98,7 @@
           </div>
           <div class="col-xs-2 friendship-btn">
             <%= button_to "Message", new_message_path, :class =>"btn btn-primary center-block", :method => :get %>
+
           <br>
             <%= link_to "View Profile", profile_path(friendship.user.profile), class:"btn btn-danger search" %>
           </div>
@@ -122,7 +123,8 @@
           <!-- <p>Job URL</p> -->
         </div>
         <div class="col-xs-2 friendship-btn">
-          <%= button_to "Message", new_message_path, :class =>"btn btn-primary center-block", :method => :get %>
+          <%= link_to "View Request", friendship_path(friendship), :class =>"btn btn-primary center-block"  %> <!-- ,:method => :get -->
+
          <br>
           <%= link_to "View Profile", profile_path(friendship.friend.profile), class:"btn btn-danger search" %>
         </div>
@@ -172,6 +174,8 @@
       </div> -->
     </div>
   </section>
+
+
 <% elsif current_user.profile.seeker == 'sourcer' %>
 <!-- show this view if profile is set to sourcer -->
 <section>
@@ -200,7 +204,8 @@
           <!-- <p>Job URL</p> -->
         </div>
         <div class="col-xs-2 friendship-btn">
-          <%= button_to "Accept Request", friendship, :class =>"btn btn-primary center-block", :method => :put %>
+
+          <%= link_to "View Request", friendship_path(friendship), :class =>"btn btn-primary center-block"  %>
          <br>
           <%= button_to "Decline Request", friendship, :class =>"btn btn-danger center-block", :method => :delete %>
         </div>

@@ -128,3 +128,54 @@
                       <!-- here I need to link to profile path and get their criteria question -->
                       <%= link_to "Request Referral", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary search", id:'search-btn' %>
                     </td>
+
+
+
+<section>
+  <div class="container">
+    <div class="row">
+  <!-- <div class="col-xs-2 float-left"> -->
+    <div class='col-xs-3 float-left'>
+            <%= link_to profile_path(@friendship.friend.profile) do %>
+            <%= image_tag @friendship.friend.profile.image %>
+            <center>
+            <p><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %></p> <%= @friendship.friend.profile.role%> at <%= @friendship.friend.profile.company %>
+            <center>
+            <% end %>
+    </div>
+  <!-- </div> -->
+
+  <div class="col-xs-9 float-left">
+    <h3>Referral Interview Request</h3>
+    <div class= "well clearfix">
+
+
+
+        <div>
+          <label>Message:</label>
+          <%= @friendship.message %>
+
+          <label>Job Link:</label>
+          <%= @friendship.link_role %>
+
+          <label>Personal Website:</label>
+          <%= @friendship.link_portfolio %>
+
+          <label> Interview Question: </label>
+          <%=@friendship.friend.profile.criteria_question %>
+
+          <label> Interview Response: </label>
+          <%= @friendship.answer %>
+
+        </div>
+
+        <br>
+
+
+    </div>
+  </div>
+
+
+  </div><!--  end row -->
+  </div>
+</section>

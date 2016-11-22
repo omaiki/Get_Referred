@@ -135,6 +135,8 @@
       </div>
     </div><!-- end row -->
 
+
+
     <div class="row">
       <div class="col-xs-12 company">
         <h4>Current Company:
@@ -156,6 +158,11 @@
         <p class="e"><%=@profile.bio%></p>
       </div>
     </div><!-- end row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Criteria Question:</h3>
+        <p><%= @profile.criteria_question %> </p>
+      </div>
     </div>
   </section>
 <% else %>

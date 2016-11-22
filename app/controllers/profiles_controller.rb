@@ -47,7 +47,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    updated_attributes = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills)
+    updated_attributes = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills, :criteria_question, :portfolio, :work_history)
     @profile.update_attributes(updated_attributes)
     add_default_image @profile
     redirect_to @profile
