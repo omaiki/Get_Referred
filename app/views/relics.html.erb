@@ -241,3 +241,17 @@
       </div>
     </div>
   </section>
+
+
+<!-- profile image from friendships  -->
+  <%= link_to profile_path(@profile) do %>
+            <%= image_tag @friendship.friend.profile.image %>
+            <center>
+            <p><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %></p> <%= @friendship.friend.profile.role%> at <%= @friendship.friend.profile.company %>
+            <center>
+            <% end %>
+
+
+
+
+<%=@friendship.friend.profile.criteria_question %>

@@ -5,6 +5,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     @friend = @friendship.friend
     @profile = @friendship.friend.profile
+    p "INDEX INDEX INDEX"
     render :new
   end
 
@@ -26,6 +27,7 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       flash[:notice] = "Added friend."
       friend_request
+      p "CREATE CREATE CREATE"
 
       # render new_friend form
       # render :new
@@ -41,7 +43,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = Friendship.find(params[:id])
+    @friendship = Friendship.find(params[:d])
     friend_request_ignore
     flash[:notice] = "Friendship request ignored"
     redirect_to dashboard_index_path
@@ -54,7 +56,7 @@ class FriendshipsController < ApplicationController
   end
 
   def edit
-    @friendship = Friendship.find(params[:id])
+    @friendship = Friendship.find(params[:friend_id])
     @friend = @friendship.friend
     @profile = @friendship.friend.profile
   end
@@ -67,6 +69,7 @@ class FriendshipsController < ApplicationController
   def update
     friend_request_accept
     flash[:notice] = "Accepted friendship."
+    p @friendship
     redirect_to dashboard_index_path
   end
 
