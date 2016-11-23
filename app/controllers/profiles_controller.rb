@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    profile_params = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills)
+    profile_params = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills, :criteria_question, :portfolio, :work_history)
     @profile = Profile.create(profile_params)
     add_default_image @profile
     render :new

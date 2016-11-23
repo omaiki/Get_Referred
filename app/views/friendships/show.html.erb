@@ -17,6 +17,12 @@ render form with:
     <div class="row">
   <!-- <div class="col-xs-2 float-left"> -->
     <div class='col-xs-3 float-left'>
+
+      <%= @friendship.message %>
+      <%= @friendship.link_role %>
+      <%= @friendship.link_portfolio %>
+      <%= @friendship.friend.profile.criteria_question %>
+      <%= @friendship.answer %>
       <%= form_for @friendship do |f| %>
             <%= link_to profile_path(@friendship.friend.profile) do %>
             <%= image_tag @friendship.friend.profile.image %>

@@ -4,6 +4,7 @@ module FriendshipsHelper
     # thus the current user is identified by friend_id.
     friendship = Friendship.find(params[:id])
     friendship.update_attributes(status: 'confirm')
+
   end
 
   # def friend_delete

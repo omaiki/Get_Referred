@@ -30,12 +30,10 @@
           <label>Personal Website:</label>
           <%= f.text_field :link_portfolio, class:"form-control", placeholder: "Link to Portfolio" %>
 
-          <label> Interview Question: </label>
-          <%= f.text_field :link_portfolio, class:"form-control", placeholder: " Sourcer Criteria Question" %>
-          <%=@profile.criteria_question %>
+          <label> <%=@profile.criteria_question %> </label>
 
-          <label> Interview Response: </label>
-          <%= f.text_area :message, rows: 10, class:"form-control", placeholder: "Write your message here" %>
+
+          <%= f.text_area :answer, rows: 10, class:"form-control", placeholder: "Write your response here" %>
 
 
 
@@ -48,7 +46,9 @@
         </div>
         <br>
 
-        <%= f.submit "Request Referral Interview", class:"btn btn-primary btn-lg pull-right", :method =>:put %>
+        <%= f.submit "Request Referral Interview", class:"btn btn-primary btn-lg pull-right", :method =>:post %>
+
+
         <% end %>
       </div>
     </div>
