@@ -179,3 +179,65 @@
   </div><!--  end row -->
   </div>
 </section>
+
+
+
+
+<!-- THIS IS THE OLD PROFILE SHOW -->
+<!-- BUTTON TO PROFILE EDIT FROM OLD PROFILE SHOW WITHIN -->
+
+<section>
+    <div class="container compress">
+      <div class="row">
+        <div id="profileside" class="col-xs-4 center profile-image">
+            <%= image_tag @profile.image, class:"profile-image" %>
+        </div>
+        <div class="col-xs-6 left name-title">
+          <% if @profile.full_name.blank? %>
+          <h2>Please update name</h2>
+          <%else%>
+          <h3 class="name"><%= "#{@profile.full_name}"%></h3>
+          <h3 class="title"><%= "#{@profile.role}" %></h3>
+          <%end%>
+        </div>
+      <div class="col-xs-2 center add-friend">
+        <% if session[:user_id] != @profile.user.id %>
+          <%= link_to "Connect", friendships_path(:friend_id => @profile.user.id), :method => :post, class:"btn btn-danger " %>
+        <!-- TODO if user is already friends alert already friends  -->
+        <!-- if user is not firends offer creation of friendship -->
+        <%else%>
+         <%= button_to "Edit Profile", edit_profile_path, class:"btn btn-danger", method: :get %>
+        <%end%>
+      </div>
+    </div><!-- end row -->
+
+
+
+    <div class="row">
+      <div class="col-xs-12 company">
+        <h4>Current Company:
+        <%= @profile.company %></h4>
+        <h5>Department: <%=@profile.department %></h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 location">
+        <h4>
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          <%= "#{@profile.city} #{","} #{@profile.state}" %>
+        </h4>
+      </div>
+    </div><!-- end row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Ideal Candidate:</h3>
+        <p class="e"><%=@profile.bio%></p>
+      </div>
+    </div><!-- end row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Criteria Question:</h3>
+        <p><%= @profile.criteria_question %> </p>
+      </div>
+    </div>
+  </section>
