@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :dashboard
   resources :employments
   resources :events
-  resources :friendships
+  resources :friendships do
+    put :custom_update
+  end
   resources :profiles
   resources :sessions
   resources :users

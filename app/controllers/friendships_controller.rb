@@ -56,7 +56,7 @@ class FriendshipsController < ApplicationController
 
 
   def custom_update
-    friendship_params =  params.require(:friendship).permit(:user_id, :status, :friend_id, :message, :answer, :link_portfolio, :link_role)
+    friendship_params =  params.require(:friendship).permit(:user_id, :friend_id, :message, :answer, :link_portfolio, :link_role)
     @friendship.update_attributes(friendship_params)
   end
 
