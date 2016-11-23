@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
+  get 'method', to: 'friendships#custom_update'
+
   resources :dashboard
   resources :employments
   resources :events

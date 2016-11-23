@@ -4,14 +4,14 @@
     <div class="row">
   <!-- <div class="col-xs-2 float-left"> -->
     <div class='col-xs-3 float-left'>
-      <%= form_for @friendship do |f| %>
+
             <%= link_to profile_path(@profile) do %>
             <%= image_tag @friendship.friend.profile.image %>
             <center>
             <p><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %></p> <%= @friendship.friend.profile.role%> at <%= @friendship.friend.profile.company %>
             <center>
             <% end %>
-      <% end %>
+
     </div>
   <!-- </div> -->
   <div class="col-xs-9 float-left">
@@ -47,6 +47,10 @@
         <br>
 
         <%= f.submit "Request Referral Interview", class:"btn btn-primary btn-lg pull-right" %>
+
+
+          <!-- same as previous dashboard - worked but accepts friendship, this is last step -->
+        <%= button_to "Accept Request", @friendship, :class =>"btn btn-primary center-block", :method => :put %>
 
 
         <% end %>

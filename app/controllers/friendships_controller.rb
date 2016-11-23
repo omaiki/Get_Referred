@@ -9,6 +9,7 @@ class FriendshipsController < ApplicationController
   end
 
   def new
+    @friendship = Friendship.new(:friend_id => params[:friend_id])
     # @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     # @friend = @friendship.friend
     # @profile = @friendship.friend.profile
@@ -16,7 +17,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-
+    # @friendship = Friendship.new(friendship_params)
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     # @friendship = current_user.friendships.build(friendship_params)
     @friend = @friendship.friend
@@ -48,23 +49,30 @@ class FriendshipsController < ApplicationController
 
   def show
     @friendship = Friendship.find(params[:id])
+    @friend = @friendship.friend
+    @profile = @friendship.friend.profile
   end
 
   def edit
     @friendship = Friendship.find(params[:id])
+    @friend = @friendship.friend
+    @profile = @friendship.friend.profile
   end
 
 
   def custom_update
-    friendship_params =  params.require(:friendship).permit(:user_id, :friend_id, :message, :answer, :link_portfolio, :link_role)
     @friendship.update_attributes(friendship_params)
   end
-
-
 
   def update
     friend_request_accept
     flash[:notice] = "Accepted friendship."
     redirect_to dashboard_index_path
+  end
+
+  private
+
+def friendship_params
+    params.require(:friendship).permit(:message, :answer, :link_portfolio, :link_role)
   end
 end
