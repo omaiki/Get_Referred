@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +19,12 @@
 <%= render partial: "./layouts/navhome" %>
 
 <% if !(current_page?(controller:'welcome', action:'index'))%>
-  <%=render partial: "./layouts/navbar"%>
+  <% if current_user.profile.seeker == "sourcer" %>
+      <%= render partial: "./layouts/navbarsource"%>
+      <% end %>
+  <% if current_user.profile.seeker == "candidate" %>
+      <%= render partial: "./layouts/navbar"%>
+      <% end %>
   <%= yield :page_header %></h1>
 <%end%>
 <%= yield %>
