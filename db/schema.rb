@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(version: 20161114090823) do
     t.integer  "user_id"
     t.integer  "friend_id"
     t.string   "status"
-    t.string   "message"
-    t.string   "answer"
-    t.string   "link_role"
-    t.string   "link_portfolio"
+    t.text     "message"
+    t.text     "answer"
+    t.text     "link_role"
+    t.text     "link_portfolio"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

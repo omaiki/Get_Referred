@@ -1,9 +1,11 @@
 module FriendshipsHelper
+
   def friend_request_accept
     # accepting a friend request is done by the recipient of the friend request.
     # thus the current user is identified by friend_id.
-    friendship = Friendship.find(params[:id])
-    friendship.update_attributes(status: 'confirm')
+    @friendship = Friendship.find(params[:id])
+    #status is confirming, but other attributes are not being updates
+    @friendship.update_attributes(:status => 'confirm')
 
   end
 

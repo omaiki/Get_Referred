@@ -10,3 +10,5 @@ class MessagesController < ApplicationController
     redirect_to conversation_path(conversation)
   end
 end
+
+
