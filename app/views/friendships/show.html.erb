@@ -65,11 +65,19 @@ render form with:
         </div>
         <br>
 
-         <%= f.submit "Request Referral Interview", class:"btn btn-primary btn-lg pull-right" %>
-
+         <%= f.submit "Accept Referral Request",  class:"btn btn-primary btn-lg pull-right" %>
 
           <!-- same as previous dashboard - worked but accepts friendship, this is last step -->
         <!--<%= button_to "Request Referral", @friendship, :class =>"btn btn-primary pull-right", :method => :put %> -->
+
+       <!--  controller action
+        friendships#double_update
+
+        verb
+        patch
+
+        prefix
+        double_update_friendships -->
 
         <% end %>
       </div>

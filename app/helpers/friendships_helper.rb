@@ -9,6 +9,12 @@ module FriendshipsHelper
 
   end
 
+  # def friend_request_confirm
+  #   @friendship = Friendship.find(params[:id])
+  #   @friendship.update_attributes(:status = )
+
+  # end
+
   # def friend_delete
   #   friendship = Friendship.where(friend_id: current_user.id, user_id: params[:id]).first
   #   friendship.destroy

@@ -6,12 +6,16 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
-  post 'friendships/custom_update', to: 'friendships#custom_update'
+
 
   resources :dashboard
   resources :employments
   resources :events
-  resources :friendships
+  resources :friendships do
+    member do
+      put :double_update
+    end
+  end
   resources :profiles
   resources :sessions
   resources :users

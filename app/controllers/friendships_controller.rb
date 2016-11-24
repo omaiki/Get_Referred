@@ -58,6 +58,7 @@ class FriendshipsController < ApplicationController
 
   def show
     @friendship = Friendship.find(params[:id])
+    p @friendship
     @friend = @friendship.friend
     @profile = @friendship.friend.profile
   end
@@ -69,21 +70,36 @@ class FriendshipsController < ApplicationController
     @profile = @friendship.friend.profile
   end
 
+  # def double_update
+  #   @friendship = Friendship.find(params[:id])
+  #   # @friendship.update_attributes(:status => 'confirm')
+  #   # friend_request_accept
+  #   p @friendship
+  #   redirect_to dashboard_index_path
+  # end
 
-  def custom_update
-    @friendship.update_attributes(friendship_params)
-  end
+
+  # if/else conditional with current user == friend_id or user_id, do different update_attributes
+
+
+      # regular update
+
+
 
   def update
     @friendship = Friendship.find(params[:id])
     updated_attributes = params.require(:friendship).permit(:user_id, :friend_id, :message, :link_portfolio, :link_role, :answer)
-    @friendship.update_attributes(updated_attributes)
-    # update attributes here
-    p @friendship
-    friend_request_accept
+    if current_user.id == @friendship.user_id
+      @friendship.update_attributes(updated_attributes)
+      # update attributes here
+      p @friendship
+    elsif current_user.id == @friendship.friend_id
+      @friendship.update_attributes(:status => 'confirm')
+    # friend_request_accept
+    end
     flash[:notice] = "Accepted friendship."
     p @friendship
-    redirect_to @friendship
+    redirect_to dashboard_index_path
   end
 
   private
