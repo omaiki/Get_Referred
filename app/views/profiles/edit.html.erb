@@ -147,7 +147,7 @@
       </div>
       <br>
 
-      <div class="col-xs-3">
+      <div class="col-xs-4">
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
         <%= p.label "All Departments" %>
         <br>
@@ -163,7 +163,7 @@
 
       </div>
 
-      <div class="col-xs-3">
+      <div class="col-xs-4">
       <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
         <%= p.label "Development/Engineering" %>
         <br>
@@ -176,67 +176,65 @@
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
         <%= p.label "Accounting" %>
         <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Accounting" %>
-        <br>
+
       </div>
 
-      <div class="col-xs-3">
+      <div class="col-xs-4">
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
         <%= p.label "QA/IT" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
         <%= p.label "Other" %>
       </div>
-      <div class="col-xs-4">
 
-      </div>
-      <div class="col-xs-1">
-
-      </div>
   <!-- </div> --><!-- end row -->
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
-    <div class="col-xs-6">
 
-    </div>
-    <div class="col-xs-6">
-
-    </div>
 
 
 
   <!-- </div> --><!-- end row -->
   <!-- <div class="row"> -->
-     <div class="col-xs-12">
-        <%= p.label "Ideal Candidate:" %>
-        <%= p.text_area :skills, rows: 7, class:'form-control' %>
-        <br>
-     </div>
+
+        <div class="col-xs-12 left">
+          <br>
+        <h4><%= p.label "Email Alert Frequency:" %></h4>
+        Upon Request     <%= p.radio_button :seeker, "candidate", :value => "Upon Request" %> |
+        Daily    <%= p.radio_button :seeker, "sourcer", :value => "Daily" %> |
+        Weekly     <%= p.radio_button :seeker, "sourcer", :value => "Weekly" %>
+      </div>
+
+
+
+
+        <div class="col-xs-12 left">
+          <br>
+        <h4><%= p.label "Email Alert View:" %></h4>
+        Answer     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
+        Profile     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %> |
+        Portfolio     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
+      </div>
+
+
 
 
      <div class="col-xs-6">
-        <%= p.label :LinkedIn, "LinkedIn" %>
-        <%= p.text_field :linkedin, placeholder: "URL to your LinkedIn profile", class:'form-control' %>
-        <br>
+
      </div>
      <div class="col-xs-6">
-        <%= p.label "Website" %>
-        <%= p.text_field :portfolio, placeholder: "URL to your personal website", class:'form-control' %>
-        <br>
+
      </div>
   <!-- </div> -->
 
 <!-- <div class="row rig"> -->
-  <div class="col-xs-6 left">
-        <h4><%= p.label "Profile Type:" %></h4>
-        Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
-        Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
-      </div>
-    <div class="col-xs-3 right">
+
+    <div class="col-xs-6 right">
+      <br>
       <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
     </div>
-    <div class="col-xs-3 right">
+    <div class="col-xs-6 right">
+      <br>
       <%= p.submit "Update", class: 'btn btn-primary' %>
     </div>
       <% end %>
