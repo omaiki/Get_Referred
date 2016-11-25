@@ -42,3 +42,8 @@ $('.btn-primary').click(function() {
 $('.btn-danger').click(function() {
   $(this).toggleClass('active');
 });
+
+// toggling classes for toggle-button
+$(document).on('click', '.toggle-button', function() {
+    $(this).toggleClass('toggle-button-selected');
+});
