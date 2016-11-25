@@ -1,2 +1,78 @@
-<h1>Friendships#edit,</h1>
-<p>Find me in app/views/friendships/edit,.html.erb</p>
+
+
+
+<section>
+  <div class="container">
+    <div class="row">
+  <!-- <div class="col-xs-2 float-left"> -->
+    <div class='col-xs-3 float-left'>
+
+            <%= link_to profile_path(@friendship.friend.profile) do %>
+            <%= image_tag @friendship.friend.profile.image %>
+            <center>
+            <p><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %></p> <%= @friendship.friend.profile.role%> at <%= @friendship.friend.profile.company %>
+            <center>
+            <% end %>
+
+
+
+    </div>
+  <!-- </div> -->
+  <div class="col-xs-9 float-left">
+    <h3>Referral Interview Request</h3>
+    <div class= "well clearfix">
+      <%= form_for @friendship do |f| %>
+        <% if @friendship.errors.any? %>
+        <ul>
+          <% @friendship.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+          <% end %>
+          <% end %>
+        </ul>
+
+        <br>
+        <div>
+         <!--  <label>Message:</label> -->
+          <%= f.label :Message %>
+          <%= f.text_area :message, rows: 10, class:"form-control", placeholder: "Write your message here" %>
+          <br>
+
+          <!-- <label>Job Link:</label> -->
+          <%= f.label :Job_Link %>
+          <%= f.text_field :link_role, class:"form-control", placeholder: "Link to Desired Role" %>
+
+          <!-- <label>Personal Website:</label> -->
+          <%= f.label :Personal_website%>
+          <%= f.text_field :link_portfolio, class:"form-control", placeholder: "Link to Portfolio" %>
+          <br>
+
+          <label> Criteria Question: <%=@friendship.friend.profile.criteria_question %> </label>
+
+          <% f.label :Answer %>
+          <%= f.text_area :answer, rows: 10, class:"form-control", placeholder: "Write your response here" %>
+
+
+
+        </div>
+        <!-- <label>Role</label>
+          <%=f.hidden_field :user_id, :value => current_user.id %>
+          <%=f.hidden_field :author, :value => current_user.profile.full_name %>
+        <div> -->
+
+        </div>
+        <br>
+
+         <%= f.submit "Request Referral Interview", class:"btn btn-primary btn-lg pull-right" %>
+
+          <!-- same as previous dashboard - worked but accepts friendship, this is last step -->
+        <!--<%= button_to "Request Referral", @friendship, :class =>"btn btn-primary pull-right", :method => :put %> -->
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  </div><!--  end row -->
+  </div>
+</section>

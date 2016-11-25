@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    profile_params = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills)
+    profile_params = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills, :criteria_question, :portfolio, :work_history, :avatar)
     @profile = Profile.create(profile_params)
     add_default_image @profile
     render :new
@@ -47,7 +47,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    updated_attributes = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills)
+    updated_attributes = params.require(:profile).permit(:user_id, :firstname, :lastname, :role, :city, :state, :linkedin, :image, :bio, :seeker, :company, :department, :skills, :criteria_question, :portfolio, :work_history, :avatar)
     @profile.update_attributes(updated_attributes)
     add_default_image @profile
     redirect_to @profile

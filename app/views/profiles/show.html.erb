@@ -2,170 +2,229 @@
 <% if @profile.seeker == 'candidate' %>
   <!-- if profile belongs to a candidate,  -->
   <section>
-    <div class="container compress">
-      <div class="row">
-        <div id="profileside" class="col-xs-4 center profile-image">
-            <%= image_tag @profile.image, class:"profile-image" %>
-        </div>
-        <div class="col-xs-6 left name-title">
-          <% if @profile.full_name.blank? %>
-          <h2>Please update name</h2>
-          <%else%>
-          <h3 class="name"><%= "#{@profile.full_name}"%></h3>
-          <h3 class="title"><%= "#{@profile.role}" %></h3>
-          <%end%>
-        </div>
-      <div class="col-xs-2 center add-friend">
-      <% if session[:user_id] != @profile.user.id %>
 
-        <!-- if user is not firends offer creation of friendship -->
-        <% for friendship in Friendship.where.not(status: ["confirm", "pending", "ignore"]).where.not('(friend_id=?) OR (user_id=?)', current_user.id, current_user.id).where.not('(friend_id=?) OR (user_id=?)', @profile.user_id, @profile.user_id) %>
-          <%= link_to "Connect", friendships_path(:friend_id => @profile.user.id), :method => :post, class:"btn btn-danger " %>
-        <% end %>
+  <div class="container">
 
-        <!--  if user is already friends alert already friends  -->
-        <% for friendship in Friendship.where(status: "pending", friend_id: @current_user.id, user_id: @profile.user_id) %>
-          <p>They have requested a connection that is waiting for approval. Please see your notifications.</p>
-        <% end %>
-        <% for friendship in Friendship.where(status: "pending", friend_id: @profile.user_id, user_id: @current_user.id) %>
-          <p>your requested connection is waiting for approval</p>
-        <% end %>
-        <% for friendship in Friendship.where(status: "confirm").where('(friend_id=?) OR (user_id=?)', current_user.id, current_user.id).where('(friend_id=?) OR (user_id=?)', @profile.user_id, @profile.user_id) %>
-          <p>you are already connected</p>
-          <% for message in Message.where(friendship_id: friendship) %>
-          <!-- <p><%=message.id%></p> -->
-          <%end%>
-        <% end %>
-
-
-
-        <% else %>
-         <%= button_to "Edit Profile", edit_profile_path, class:"btn btn-danger", method: :get %>
-        <%end%>
-      </div>
-    </div><!-- end row -->
-    <div class="row">
-      <div class="col-xs-12 location">
-        <h4>
-          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-          <%= "#{@profile.city} #{","} #{@profile.state}" %>
-        </h4>
-      </div>
-    </div><!-- end row -->
-    <div class="row">
-      <div class="col-xs-12">
-        <h3>Skills</h3>
-      </div>
-    </div><!-- end row -->
-      <div class="row">
-        <div class="col-xs-12 employments indent">
-          <p class="e"><%=@profile.skills%></p>
-        </div>
-      </div>
-      <div class="row">
-      <div class="col-xs-12">
-        <h3>Bio</h3>
-      </div>
-    </div><!-- end row -->
-      <div class="row">
-        <div class="col-xs-12 employments indent">
-          <p class="e"><%=@profile.bio%></p>
-        </div>
-      </div><!-- end row -->
-      <div class="row ">
-        <div class="col-xs-12">
-          <h3>Employment History</h3>
-        </div>
-      </div><!-- end row -->
-      <div class="row">
-        <% @profile.employments.each do |e| %>
-        <div class="row employments industry">
-          <div class="indent result-detail">
-            <div class="col-xs-8">
-
-            <%= link_to employment_path(e) do%>
-            <h4><%=e.title%> at:</h4>
-            <!-- <div class="row"> -->
-              <h4><%= e.company %></h4>
-
-              <!-- <div class="col-xs-8"> -->
-                <h5>Location: <%=e.city%>, <%= e.state %></h5>
-                <h5>Industry: <%=e.industry %></h5>
-                <%= link_to employment_path(e) do%>
-                <h5>Summary: <%=e.summary%></h5>
-                <% end %>
-              </div>
-
-              <div class="col-xs-4">
-                <% if session[:user_id] == @profile.user.id %>
-                <%= link_to "Edit this Job", edit_employment_path(e), class:"btn btn-danger pull-right", id:"show-edit" %>
-                <% end %>
-              </div>
-            </div>
-            <!-- end row -->
-            <% end %>
+  <div class="row push-down">
+      <!-- <div class="col-xs-12">
+        <h2 class='center'>Edit Candidate Profile</h2>
+      </div> -->
+      <div class="col-xs-3 float-left">
+          <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
+          <div class='profile-pic center'>
+           <%= image_tag @profile.avatar.url(:medium) %>
           </div>
+          <%else%>
+          <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
+          <h6>Please update your profile image.</h6>
           <%end%>
-        </div><!-- end row employments industry -->
-          <div class="row">
-            <div class="col-xs-12 center">
-              <% if session[:user_id] == @profile.user.id %>
-                <%= link_to "Add Employment", new_employment_path, class:"btn btn-primary pull-right", id:"show" %>
-              <% end %>
-            </div>
-        </div>
+          <%= form_for @profile, html: { multipart: true } do |p| %>
+         <div class='profile-pic-button center'>
+          <%= p.file_field :avatar %>
+          <%= p.submit "Add Photo", class: 'btn btn-danger' %>
+          </div>
+
+
+          <!--<%= p.label "Image URL" %>
+         <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
+          <br> -->
       </div>
+
+
+  <!-- <div class="row"> --> <!-- start remaining form fields -->
+    <div class='col-xs-9 float-left'> <!-- new div class -->
+      <div class="col-xs-3">
+        <%= p.label "First name" %>
+        <%= p.text_field :firstname, placeholder: "First Name", class:'form-control', autofocus: true %>
+        <br>
+      </div>
+      <div class="col-xs-3">
+        <%= p.label "Last name" %>
+        <%= p.text_field :lastname, placeholder: "Last Name", class:'form-control' %>
+        <br>
+      </div>
+      <div class="col-xs-4">
+        <%= p.label "City" %>
+        <%= p.text_field :city, placeholder: "City", class:'form-control'%>
+        <br>
+      </div>
+      <div class="col-xs-1">
+        <%= p.label "State" %>
+        <br>
+        <%= p.select :state, ['CA', 'NV'] %>
+        <br>
+      </div>
+  <!-- </div> --><!-- end row -->
+
+  <!-- <div class="row"> --> <!-- start remaining form fields -->
+    <div class="col-xs-6">
+        <%= p.label "Title" %>
+        <%= p.text_field :bio, class:'form-control'%>
+        <br>
+    </div>
+    <div class="col-xs-6">
+        <%= p.label "Desired role" %>
+        <%= p.text_field :role, class:'form-control'%>
+        <br>
+    </div>
+
+  <!-- </div> --><!-- end row -->
+
+
+
+  <!-- <div class="row"> -->
+     <div class="col-xs-12">
+        <%= p.label "Work history" %>
+        <%= p.text_area :skills, class:'form-control' %>
+        <br>
+     </div>
+     <div class="col-xs-6">
+        <%= p.label :LinkedIn, "LinkedIn" %>
+        <%= p.text_field :linkedin, placeholder: "URL to your LinkedIn profile", class:'form-control' %>
+        <br>
+     </div>
+     <div class="col-xs-6">
+        <%= p.label "Website" %>
+        <%= p.text_field :portfolio, placeholder: "URL to your personal website", class:'form-control' %>
+        <br>
+     </div>
+  <!-- </div> -->
+
+<!-- <div class="row rig"> -->
+  <div class="col-xs-6 left">
+        <h4><%= p.label "Profile Type:" %></h4>
+        Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
+        Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
+      </div>
+    <div class="col-xs-3 right">
+      <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
+    </div>
+    <div class="col-xs-3 right">
+      <%= p.submit "Update", class: 'btn btn-primary' %>
+    </div>
+      <% end %>
+  </div>
+
+<!-- </div> -->
+</div> <!-- new div  -->
+
+</div> <!-- end row push down -->
+
 </section>
 <% elsif @profile.seeker == 'sourcer' %>
   <!-- if profile belongs to a sourcer,  -->
   <section>
-    <div class="container compress">
-      <div class="row">
-        <div id="profileside" class="col-xs-4 center profile-image">
-            <%= image_tag @profile.image, class:"profile-image" %>
-        </div>
-        <div class="col-xs-6 left name-title">
-          <% if @profile.full_name.blank? %>
-          <h2>Please update name</h2>
-          <%else%>
-          <h3 class="name"><%= "#{@profile.full_name}"%></h3>
-          <h3 class="title"><%= "#{@profile.role}" %></h3>
-          <%end%>
-        </div>
-      <div class="col-xs-2 center add-friend">
-        <% if session[:user_id] != @profile.user.id %>
-          <%= link_to "Connect", friendships_path(:friend_id => @profile.user.id), :method => :post, class:"btn btn-danger " %>
-        <!-- TODO if user is already friends alert already friends  -->
-        <!-- if user is not firends offer creation of friendship -->
-        <%else%>
-         <%= button_to "Edit Profile", edit_profile_path, class:"btn btn-danger", method: :get %>
-        <%end%>
-      </div>
-    </div><!-- end row -->
 
-    <div class="row">
-      <div class="col-xs-12 company">
-        <h4>Current Company:
-        <%= @profile.company %></h4>
-        <h5>Department: <%=@profile.department %></h5>
+  <div class="container">
+
+  <div class="row push-down">
+      <!-- <div class="col-xs-12">
+        <h2 class='center'>Edit Candidate Profile</h2>
+      </div> -->
+      <div class="col-xs-3 float-left">
+          <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
+          <div class='profile-pic center'>
+          <%= image_tag @profile.avatar.url(:medium) %>
+          </div>
+          <%else%>
+          <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
+          <h6>Please update your profile image.</h6>
+          <%end%>
+          <%= form_for @profile, html: { multipart: true } do |p| %>
+         <div class='profile-pic-button center'>
+          <%= p.file_field :avatar %>
+          <%= p.submit "Add Photo", class: 'btn btn-danger' %>
+          </div>
+          <!--<%= p.label "Image URL" %>
+         <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
+          <br> -->
       </div>
+
+  <!-- <div class="row"> --> <!-- start remaining form fields -->
+    <div class='col-xs-9 float-left'> <!-- new div class -->
+      <div class="col-xs-3">
+        <%= p.label "First name" %>
+        <%= p.text_field :firstname, placeholder: "First Name", class:'form-control', autofocus: true %>
+        <br>
+      </div>
+      <div class="col-xs-3">
+        <%= p.label "Last name" %>
+        <%= p.text_field :lastname, placeholder: "Last Name", class:'form-control' %>
+        <br>
+      </div>
+      <div class="col-xs-4">
+        <%= p.label "City" %>
+        <%= p.text_field :city, placeholder: "City", class:'form-control'%>
+        <br>
+      </div>
+      <div class="col-xs-1">
+        <%= p.label "State" %>
+        <br>
+        <%= p.select :state, ['CA', 'NV'] %>
+        <br>
+      </div>
+  <!-- </div> --><!-- end row -->
+
+  <!-- <div class="row"> --> <!-- start remaining form fields -->
+    <div class="col-xs-6">
+        <%= p.label "Company:" %>
+        <%= p.text_field :company, class:'form-control'%>
+        <br>
     </div>
-    <div class="row">
-      <div class="col-xs-12 location">
-        <h4>
-          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-          <%= "#{@profile.city} #{","} #{@profile.state}" %>
-        </h4>
-      </div>
-    </div><!-- end row -->
-    <div class="row">
-      <div class="col-xs-12">
-        <h3>Ideal Candidate:</h3>
-        <p class="e"><%=@profile.bio%></p>
-      </div>
-    </div><!-- end row -->
+    <div class="col-xs-6">
+        <%= p.label "Title:" %>
+        <%= p.text_field :bio, class:'form-control'%>
+        <br>
     </div>
-  </section>
+
+    <div class="col-xs-12">
+        <%= p.label "Criteria Question:" %>
+        <%= p.text_field :criteria_question, class:'form-control' %>
+      <br>
+      </div>
+
+  <!-- </div> --><!-- end row -->
+  <!-- <div class="row"> -->
+     <div class="col-xs-12">
+        <%= p.label "Ideal Candidate:" %>
+        <%= p.text_area :skills, rows: 7, class:'form-control' %>
+        <br>
+     </div>
+
+
+     <div class="col-xs-6">
+        <%= p.label :LinkedIn, "LinkedIn" %>
+        <%= p.text_field :linkedin, placeholder: "URL to your LinkedIn profile", class:'form-control' %>
+        <br>
+     </div>
+     <div class="col-xs-6">
+        <%= p.label "Website" %>
+        <%= p.text_field :portfolio, placeholder: "URL to your personal website", class:'form-control' %>
+        <br>
+     </div>
+  <!-- </div> -->
+
+<!-- <div class="row rig"> -->
+  <div class="col-xs-6 left">
+        <h4><%= p.label "Profile Type:" %></h4>
+        Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
+        Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
+      </div>
+    <div class="col-xs-3 right">
+      <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
+    </div>
+    <div class="col-xs-3 right">
+      <%= p.submit "Update", class: 'btn btn-primary' %>
+    </div>
+      <% end %>
+  </div>
+
+<!-- </div> -->
+</div> <!-- new div  -->
+
+</div> <!-- end row push down -->
+</section>
+
 <% else %>
 <!-- if profile belongs to someone who hasn't filled this section out, don't display content,  -->
   <section>

@@ -1,12 +1,29 @@
 <!-- Show this view if profile is set to candidate -->
 <% if current_user.profile.seeker == 'candidate' %>
-  <section>
-    <div class="jumbotron">
-      <h1>Welcome Candidate</h1>
+
+<!--     <div class="jumbotron">
+      <h1>Welcome Candidate</h1> -->
       <!-- <div class="find">
         <button class="btn btn-primary"><a href="/profiles/">All Profiles</a></button>
       </div> -->
-    </div>
+    <!-- </div> -->
+
+  <div id="avatar">
+            <%= link_to profile_path(current_user.profile) do %>
+              <%= image_tag current_user.profile.avatar %>
+            <% end %>
+            <center>
+            <%= current_user.profile.firstname %> <%= current_user.profile.lastname %>
+            <center>
+  </div>
+
+  <section>
+    <!-- <div class="jumbotron"> -->
+      <!-- <h1>Welcome Candidate</h1> -->
+      <!-- <div class="find">
+        <button class="btn btn-primary"><a href="/profiles/">All Profiles</a></button>
+      </div> -->
+    <!-- </div> -->
     <div class="container ">
       <h1>Notifications</h1>
       <hr>
@@ -17,7 +34,7 @@
         <div class="row notifications">
           <div class="col-xs-3 center" id="avatar">
             <%= link_to profile_path(friendship.user.profile) do %>
-              <%= image_tag friendship.user.profile.image %>
+              <%= image_tag friendship.user.profile.avatar.url(:medium) %>
             <% end %>
           </div>
           <div class="col-xs-7">
@@ -40,7 +57,7 @@
         <div class="row notifications">
           <div class="col-xs-3 center" id="avatar">
             <%= link_to profile_path(friendship.friend.profile) do %>
-              <%= image_tag friendship.friend.profile.image %>
+              <%= image_tag friendship.friend.profile.avatar.url(:medium) %>
             <% end %>
           </div>
           <div class="col-xs-7">
@@ -156,13 +173,27 @@
       </div> -->
     </div>
   </section>
+
 <% elsif current_user.profile.seeker == 'sourcer' %>
+
 <!-- show this view if profile is set to sourcer -->
 <section>
-  <div class="jumbotron">
+  <!--<div class="jumbotron">
     <h1>Welcome Sourcer</h1>
+  </div> -->
+  <div id="avatar">
+            <%= link_to profile_path(current_user.profile) do %>
+              <%= image_tag current_user.profile.avatar.url(:medium) %>
+            <% end %>
+            <center>
+            <%= current_user.profile.firstname %> <%= current_user.profile.lastname %>
+            <center>
   </div>
-  <div class="container ">
+  <div class="container">
+    <!-- <div class="row"> -->
+
+    <!-- </div> -->
+    <div class="row">
     <h1>Notifications</h1>
     <hr>
     <!-- show pending firendship where current user is under friend_id; this prevents users who sent the request from seeing their own request as pending and changing the confirmation status; Status should only be available to the the person recieving the request-->
@@ -171,7 +202,7 @@
       <div class="row notifications">
         <div class="col-xs-3 center" id="avatar">
           <%= link_to profile_path(friendship.user.profile) do %>
-            <%= image_tag friendship.user.profile.image %>
+            <%= image_tag friendship.user.profile.avatar.url(:medium) %>
           <% end %>
         </div>
         <div class="col-xs-7">
@@ -184,7 +215,8 @@
           <!-- <p>Job URL</p> -->
         </div>
         <div class="col-xs-2 friendship-btn">
-          <%= button_to "Accept Request", friendship, :class =>"btn btn-primary center-block", :method => :put %>
+
+          <%= link_to "View Request", friendship_path(friendship), :class =>"btn btn-primary center-block"  %>
          <br>
           <%= button_to "Decline Request", friendship, :class =>"btn btn-danger center-block", :method => :delete %>
         </div>
@@ -195,7 +227,7 @@
       <div class="row notifications">
         <div class="col-xs-3 center" id="avatar">
           <%= link_to profile_path(friendship.friend.profile) do %>
-            <%= image_tag friendship.friend.profile.image %>
+            <%= image_tag friendship.friend.profile.avatar %>
           <% end %>
         </div>
         <div class="col-xs-7">
@@ -308,7 +340,8 @@
       <div class="col-xs-2">
         <button class="btn btn-primary">See Message</button>
       </div>
-    </div> -->
+    </div>  -->
+  </div> <!-- new -->
   </div>
 </section>
 <% else %>

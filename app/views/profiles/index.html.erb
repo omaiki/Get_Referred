@@ -18,53 +18,93 @@
         <div id="profiles"><%= render 'profiles' %></div>
 
             <table class="table thumbnail left" width:"100%">
-              <tr>
+              <!-- <tr>
                 <th></th>
                 <th><%= sortable 'firstname' %></th>
                 <th><%= sortable 'lastname' %></th>
                 <th><%= sortable 'city' %></th>
                 <th><%= sortable 'role' %></th>
                 <th><%= sortable 'company' %></th>
-              </tr>
+              </tr> -->
               <% if current_user.profile.seeker == 'candidate' %>
                 <% for profile in @profiles.where(seeker: "sourcer") %>
                   <tr>
+                    <th>  </th>
+                    <th> Name </th>
+                    <th> Company </th>
+                    <th> Role </th>
+                    <th> City </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th><th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th><th></th>
+                  </tr>
                     <td>
+
                       <%= link_to profile_path(profile) do%>
-                      <img src="<%=profile.image %>">
+                      <img class="welcome-icon" src="<%= profile.avatar.url(:thumb) %>" alt="Users icon" width="100px" height="100px"/>
+
+                        <!-- <img src="<%= profile.avatar %>"> -->
+                        <!-- asset_path( 'placeholder-user-photo.png' )  -->
                       <% end %>
                     </td>
                     <td>
                       <%= link_to profile_path(profile) do%>
-                      <%=profile.firstname%>
+                      <%=profile.firstname%> <%=profile.lastname%>
                       <% end %>
                     </td>
                     <td>
                       <%= link_to profile_path(profile) do%>
-                      <%=profile.lastname%>
+                      <%=profile.company%>
+                      <%= 'Company' %>
                       <% end %>
+                    </td>
+                    <td>
+                      <%= link_to profile_path(profile) do%>
+                      <%=profile.role%>
+                      <%= 'Title' %>
+                      <% end %>
+
                     </td>
                     <td>
                       <%= link_to profile_path(profile) do%>
                       <%=profile.city%>
                       <% end %>
                     </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+
                     <td>
-                      <%= link_to profile_path(profile) do%>
-                      <%=profile.role%>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= link_to profile_path(profile) do%>
-                      <%=profile.company%>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= link_to "Connect", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary search" %>
-                      <br>
                       <%= link_to "View Profile", profile_path(profile), class:"btn btn-danger search" %>
+                      <br>
+                      <!-- here I need to link to profile path and get their criteria question -->
+                      <%= link_to "Request Referral", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary search", id:'search-btn' %>
+
+
                     </td>
-                  </tr >
+
+                  </tr>
                 <%end%>
               <% elsif current_user.profile.seeker == 'sourcer' %>
                 <% for profile in @profiles.where(seeker: "candidate") %>
