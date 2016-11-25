@@ -20,8 +20,12 @@
           <%end%>
           <%= form_for @profile do |p| %>
          <div class='profile-pic-button center'>
-          <%= p.submit "Add Photo", class: 'btn btn-danger' %>
-          </div>
+            <%= form_for @profile, html: {multipart: true} do |f| %>
+            <%= f.label :avatar %><br>
+            <%= f.file_field :avatar %>
+            <%= f.submit "Add Photo", class: 'btn btn-danger' %>
+            <% end %>
+        </div>
           <!--<%= p.label "Image URL" %>
          <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
           <br> -->
