@@ -12,20 +12,19 @@
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
           <div class='profile-pic center'>
-          <%= image_tag @profile.image, class:"profile-image", id:"edit-image" %>
+           <%= image_tag @profile.avatar.url(:medium) %>
           </div>
           <%else%>
           <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
           <h6>Please update your profile image.</h6>
           <%end%>
-          <%= form_for @profile do |p| %>
+          <%= form_for @profile, html: { multipart: true } do |p| %>
          <div class='profile-pic-button center'>
-            <%= form_for @profile, html: {multipart: true} do |f| %>
-            <%= f.label :avatar %><br>
-            <%= f.file_field :avatar %>
-            <%= f.submit "Add Photo", class: 'btn btn-danger' %>
-            <% end %>
-        </div>
+          <%= p.file_field :avatar %>
+          <%= p.submit "Add Photo", class: 'btn btn-danger' %>
+          </div>
+
+
           <!--<%= p.label "Image URL" %>
          <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
           <br> -->
@@ -125,14 +124,15 @@
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
           <div class='profile-pic center'>
-          <%= image_tag @profile.image, class:"profile-image", id:"edit-image" %>
+          <%= image_tag @profile.avatar.url(:medium) %>
           </div>
           <%else%>
           <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
           <h6>Please update your profile image.</h6>
           <%end%>
-          <%= form_for @profile do |p| %>
+          <%= form_for @profile, html: { multipart: true } do |p| %>
          <div class='profile-pic-button center'>
+          <%= p.file_field :avatar %>
           <%= p.submit "Add Photo", class: 'btn btn-danger' %>
           </div>
           <!--<%= p.label "Image URL" %>

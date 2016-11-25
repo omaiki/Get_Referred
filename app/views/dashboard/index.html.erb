@@ -10,7 +10,7 @@
 
   <div id="avatar">
             <%= link_to profile_path(current_user.profile) do %>
-              <%= image_tag current_user.profile.image %>
+              <%= image_tag current_user.profile.avatar %>
             <% end %>
             <center>
             <%= current_user.profile.firstname %> <%= current_user.profile.lastname %>
@@ -34,7 +34,7 @@
         <div class="row notifications">
           <div class="col-xs-3 center" id="avatar">
             <%= link_to profile_path(friendship.user.profile) do %>
-              <%= image_tag friendship.user.profile.image %>
+              <%= image_tag friendship.user.profile.avatar.url(:medium) %>
             <% end %>
           </div>
           <div class="col-xs-7">
@@ -57,7 +57,7 @@
         <div class="row notifications">
           <div class="col-xs-3 center" id="avatar">
             <%= link_to profile_path(friendship.friend.profile) do %>
-              <%= image_tag friendship.friend.profile.image %>
+              <%= image_tag friendship.friend.profile.avatar.url(:medium) %>
             <% end %>
           </div>
           <div class="col-xs-7">
@@ -183,7 +183,7 @@
   </div> -->
   <div id="avatar">
             <%= link_to profile_path(current_user.profile) do %>
-              <%= image_tag current_user.profile.image %>
+              <%= image_tag current_user.profile.avatar.url(:medium) %>
             <% end %>
             <center>
             <%= current_user.profile.firstname %> <%= current_user.profile.lastname %>
@@ -202,7 +202,7 @@
       <div class="row notifications">
         <div class="col-xs-3 center" id="avatar">
           <%= link_to profile_path(friendship.user.profile) do %>
-            <%= image_tag friendship.user.profile.image %>
+            <%= image_tag friendship.user.profile.avatar.url(:medium) %>
           <% end %>
         </div>
         <div class="col-xs-7">
@@ -227,7 +227,7 @@
       <div class="row notifications">
         <div class="col-xs-3 center" id="avatar">
           <%= link_to profile_path(friendship.friend.profile) do %>
-            <%= image_tag friendship.friend.profile.image %>
+            <%= image_tag friendship.friend.profile.avatar %>
           <% end %>
         </div>
         <div class="col-xs-7">

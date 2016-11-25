@@ -50,9 +50,10 @@
                     <td>
 
                       <%= link_to profile_path(profile) do%>
-                      <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
+                      <img class="welcome-icon" src="<%= profile.avatar.url(:thumb) %>" alt="Users icon" width="100px" height="100px"/>
 
-                       <!-- <img src="<%=profile.image %>"> -->
+                        <!-- <img src="<%= profile.avatar %>"> -->
+                        <!-- asset_path( 'placeholder-user-photo.png' )  -->
                       <% end %>
                     </td>
                     <td>
@@ -99,7 +100,7 @@
                       <br>
                       <!-- here I need to link to profile path and get their criteria question -->
                       <%= link_to "Request Referral", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary search", id:'search-btn' %>
-                      <%= link_to "Request Referral", new_friendship_path(:friend_id => profile.user) %>
+
 
                     </td>
 
