@@ -1,3 +1,5 @@
+
+
 <!-- if current user is a candidate -->
 <% if current_user.profile.seeker == 'candidate' %>
 <section>
@@ -137,45 +139,72 @@
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
     <div class='col-xs-9 float-left'> <!-- new div class -->
-      <div class="col-xs-3">
-        <%= p.label "First name" %>
-        <%= p.text_field :firstname, placeholder: "First Name", class:'form-control', autofocus: true %>
+
+      <div class="col-xs-12">
+        <%= p.label "Criteria Question:" %>
+        <%= p.text_field :criteria_question, class:'form-control' %>
         <br>
       </div>
+      <br>
+
       <div class="col-xs-3">
-        <%= p.label "Last name" %>
-        <%= p.text_field :lastname, placeholder: "Last Name", class:'form-control' %>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "All Departments" %>
         <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Sales" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Marketing" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Human Resources" %>
+        <br>
+
+      </div>
+
+      <div class="col-xs-3">
+      <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Development/Engineering" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Product/Design" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Operations" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Accounting" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Accounting" %>
+        <br>
+      </div>
+
+      <div class="col-xs-3">
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "QA/IT" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label "Other" %>
       </div>
       <div class="col-xs-4">
-        <%= p.label "City" %>
-        <%= p.text_field :city, placeholder: "City", class:'form-control'%>
-        <br>
+
       </div>
       <div class="col-xs-1">
-        <%= p.label "State" %>
-        <br>
-        <%= p.select :state, ['CA', 'NV'] %>
-        <br>
+
       </div>
   <!-- </div> --><!-- end row -->
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
     <div class="col-xs-6">
-        <%= p.label "Company:" %>
-        <%= p.text_field :company, class:'form-control'%>
-        <br>
+
     </div>
     <div class="col-xs-6">
-        <%= p.label "Title:" %>
-        <%= p.text_field :bio, class:'form-control'%>
-        <br>
+
     </div>
 
-     <div class="col-xs-12">
-        <%= p.label "Criteria Question:" %>
-        <%= p.text_field :criteria_question, class:'form-control' %>
-      </div>
+
 
   <!-- </div> --><!-- end row -->
   <!-- <div class="row"> -->
