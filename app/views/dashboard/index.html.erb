@@ -177,11 +177,8 @@
 <% elsif current_user.profile.seeker == 'sourcer' %>
 
 <!-- show this view if profile is set to sourcer -->
-<section>
-  <!--<div class="jumbotron">
-    <h1>Welcome Sourcer</h1>
-  </div> -->
-  <div id="avatar">
+
+<div id="avatar">
             <%= link_to profile_path(current_user.profile) do %>
               <%= image_tag current_user.profile.avatar.url(:medium) %>
             <% end %>
@@ -189,6 +186,11 @@
             <%= current_user.profile.firstname %> <%= current_user.profile.lastname %>
             <center>
   </div>
+<section>
+  <!--<div class="jumbotron">
+    <h1>Welcome Sourcer</h1>
+  </div> -->
+
   <div class="container">
     <!-- <div class="row"> -->
 
@@ -200,9 +202,12 @@
     <% for friendship in Friendship.where(status: "pending").where('(friend_id=?) OR (user_id=?)', current_user.id, current_user.id) %>
     <% if friendship[:friend_id] == current_user.id %>
       <div class="row notifications">
-        <div class="col-xs-3 center" id="avatar">
+        <div class="col-xs-2">
+        </div>
+        <div class="col-xs-9">
+        <div class="col-xs-3 center" id="avatarb">
           <%= link_to profile_path(friendship.user.profile) do %>
-            <%= image_tag friendship.user.profile.avatar.url(:medium) %>
+            <%= image_tag friendship.user.profile.avatar.url(:large) %>
           <% end %>
         </div>
         <div class="col-xs-7">
@@ -221,6 +226,7 @@
           <%= button_to "Decline Request", friendship, :class =>"btn btn-danger center-block", :method => :delete %>
         </div>
       </div>
+    </div>
 
     <%elsif friendship[:user_id] == current_user.id %>
 
