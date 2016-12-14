@@ -169,50 +169,74 @@
         <h4><%= p.label "Open to Referring:" %></h4>
       </div>
 
-      <div class="col-xs-4">
+      <div class="col-xs-3">
         <br>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "All Departments" %>
+        <%= p.label :all_d, "All Departments" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Sales" %>
+        <%= p.label :sales, "Sales/Customer Support" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Marketing" %>
+        <%= p.label :market, "Marketing/Advertising" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Human Resources" %>
+        <%= p.label :hr, "Human Resources" %>
         <br>
 
       </div>
 
-      <div class="col-xs-4">
+      <div class="col-xs-3">
         <br>
         <br>
       <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Development/Engineering" %>
+        <%= p.label :dev, "Engineering/Software" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Product/Design" %>
+        <%= p.label :design, "Product/Design" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Operations" %>
+        <%= p.label :testing, "Testing/QA" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Accounting" %>
+        <%= p.label :r_d, "R&D" %>
         <br>
+
+        <!-- Any Department
+        Sales/Customer Support
+        Marketing/Advertising
+        Human Resources/Talent Acquisition
+        R&D
+        Engineering/Software Development
+        Product/Design
+        Testing/QA
+        Operations/Administration
+        Finance/Accounting
+        Legal
+        Other -->
+
 
       </div>
 
-      <div class="col-xs-2">
+      <div class="col-xs-3">
         <br>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "QA/IT" %>
+        <%= p.label :operations, "Operations/Administration" %>
         <br>
         <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label "Other" %>
+        <%= p.label :finance, "Finance/Accounting" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :legal, "Legal" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :other, "Other" %>
+
+        <%= p.text_field :work_history,class:'form-control' %>
+
+
       </div>
 
   <!-- </div> --><!-- end row -->
