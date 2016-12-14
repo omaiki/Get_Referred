@@ -140,26 +140,20 @@
   <!-- <div class="row"> --> <!-- start remaining form fields -->
     <div class='col-xs-9 float-left'> <!-- new div class -->
 
-      <div class="col-xs-12">
+      <div class="col-xs-11 col-md-offset-1">
         <%= p.label "Criteria Question:" %>
         <%= p.text_field :criteria_question, class:'form-control' %>
         <br>
+        <br>
       </div>
 
-      <div class="col-xs-6 left">
+      <div class="col-xs-5 left col-md-offset-1">
         <%= p.label "Require Link to Job Requisition: " %>
        <input type="checkbox" class="js-switch" checked />
        <!--  <div class="toggle-button"> -->
         <br>
         <!-- </div> -->
       </div>
-
-     <!--  ul.tg-list
-  li.tg-list-item
-    h4 Light
-    input#cb1.tgl.tgl-light(type = "checkbox")
-    label.tgl-btn(for = "cb1") -->
-
 
 
       <div class="col-xs-6 left">
@@ -172,7 +166,7 @@
       </div>
 
       <br>
-      <div class="col-xs-2">
+      <div class="col-xs-2 col-md-offset-1">
         <br>
         <h4><%= p.label "Open to Referring:" %></h4>
       </div>
@@ -256,7 +250,7 @@
   <!-- </div> --><!-- end row -->
   <!-- <div class="row"> -->
 
-        <div class="col-xs-12 left">
+        <div class="col-xs-11 left col-md-offset-1">
           <br>
         <h4><%= p.label "Email Alert Frequency:" %></h4>
         Upon Request     <%= p.radio_button :seeker, "candidate", :value => "Upon Request" %> |
@@ -270,7 +264,7 @@
 
 
 
-        <div class="col-xs-12 left">
+        <div class="col-xs-11 left col-md-offset-1">
           <br>
         <h4><%= p.label "Email Alert View:" %></h4>
         Answer     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
