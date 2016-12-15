@@ -8,10 +8,12 @@
     <div class='col-xs-3 float-left'>
 
             <%= link_to profile_path(@friendship.friend.profile) do %>
-            <%= image_tag @friendship.friend.profile.image %>
-            <center>
-            <p><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %></p> <%= @friendship.friend.profile.role%> at <%= @friendship.friend.profile.company %>
-            <center>
+            <div class="image_style">
+            <%= image_tag @friendship.friend.profile.avatar.url(:medium) %>
+            </div>
+
+            <h4><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %> | <%= @friendship.friend.profile.company %> Company </h4>
+
             <% end %>
 
 
@@ -42,7 +44,7 @@
           <%= f.text_field :link_role, class:"form-control", placeholder: "Link to Desired Role" %>
 
           <!-- <label>Personal Website:</label> -->
-          <%= f.label :Personal_website%>
+          <%= f.label :Portfolio %>
           <%= f.text_field :link_portfolio, class:"form-control", placeholder: "Link to Portfolio" %>
           <br>
 

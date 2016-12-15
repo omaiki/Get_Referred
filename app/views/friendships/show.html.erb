@@ -20,11 +20,11 @@ render form with:
 
             <%= link_to profile_path(@friendship.friend.profile) do %>
             <div class="image_style">
-            <%= image_tag @friendship.friend.profile.avatar.url(:medium) %>
+            <%= image_tag @friendship.user.profile.avatar.url(:medium) %>
             </div>
-            <center>
-            <h5><p><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %></p> <%= @friendship.friend.profile.role%> at <%= @friendship.friend.profile.company %></h5>
-            <center>
+
+            <h4><%= @friendship.user.profile.firstname %> <%= @friendship.user.profile.lastname %> <%= @friendship.friend.profile.role%> | <%= @friendship.friend.profile.company %> Role </h4>
+
 
             <% end %>
 
@@ -48,7 +48,7 @@ render form with:
           <%= f.text_field :link_role, class:"form-control", placeholder: "Link to Desired Role" %>
 
           <!-- <label>Personal Website:</label> -->
-          <%= f.label :Personal_website%>
+          <%= f.label :Portfolio%>
           <%= f.text_field :link_portfolio, class:"form-control", placeholder: "Link to Portfolio" %>
           <br>
 
