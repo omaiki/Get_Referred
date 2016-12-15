@@ -51,6 +51,7 @@ font-size: 20pt;
 
 .navbar-header .navbar-brand {
 	color: #ffffff;
+
 }
 
 .navbar-header .navbar-brand:hover {
@@ -136,6 +137,9 @@ a:hover, a:focus {
 .main-nav {
 	background-color: #F5F5F5;
 	text-align: center;
+	border: 1px solid black;
+  border-bottom-width: 3px;
+
 }
 
 #center-nav {
@@ -148,6 +152,7 @@ a:hover, a:focus {
 		color: black;
 		font-size: 16pt;
 		padding: 5px 25px 0px 25px;
+
 	}
 }
 
@@ -157,6 +162,7 @@ a:hover, a:focus {
 	border-bottom-color: #F5F5F5;
 	border-bottom-style: solid;
 	font-weight: 300;
+
 }
 
 #center-nav > li a:hover {
@@ -544,12 +550,14 @@ button:active {
 ////////// dashboard & message styles //////
 ///////////////////////////////////////////
 #avatar {
-	width: 150px;
-	height: 200px;
-	margin-top: 15px;
+
+	margin-top: 30px;
+	margin-left: 30px;
 }
 
 #avatarb {
+margin-top: 20px;
+padding-top: 10px;
 }
 
 hr {
@@ -557,7 +565,7 @@ hr {
 	margin-top: 0px;
 }
 
-.notifications {
+.thematic {
 
 padding-bottom: 0;
 }
