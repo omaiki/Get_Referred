@@ -12,7 +12,7 @@
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
           <div class='profile-pic center'>
-           <%= image_tag @profile.avatar.url(:medium) %>
+           <%= image_tag @profile.avatar.url(:medium), :class => "image_style" %>
           </div>
           <%else%>
           <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
@@ -32,8 +32,8 @@
 
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
-    <div class='col-xs-9 float-left'> <!-- new div class -->
-      <div class="col-xs-3">
+    <div class='col-xs-9'> <!-- new div class -->
+      <div class="col-xs-3 col-md-offset-1">
         <%= p.label "First name" %>
         <%= p.text_field :firstname, placeholder: "First Name", class:'form-control', autofocus: true %>
         <br>
@@ -51,13 +51,13 @@
       <div class="col-xs-1">
         <%= p.label "State" %>
         <br>
-        <%= p.select :state, ['CA', 'NV'] %>
+        <%= p.select :state, ['AL','AK', 'AZ', 'AR', 'CA', 'CO', 'CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN', 'TX', 'UT','VT','VA','WA','WV','WI','WY'] %>
         <br>
       </div>
   <!-- </div> --><!-- end row -->
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
-    <div class="col-xs-6">
+    <div class="col-xs-5 col-md-offset-1">
         <%= p.label "Title" %>
         <%= p.text_field :bio, class:'form-control'%>
         <br>
@@ -73,12 +73,12 @@
 
 
   <!-- <div class="row"> -->
-     <div class="col-xs-12">
+     <div class="col-xs-11 col-md-offset-1">
         <%= p.label "Work history" %>
         <%= p.text_area :skills, class:'form-control' %>
         <br>
      </div>
-     <div class="col-xs-6">
+     <div class="col-xs-5 col-md-offset-1">
         <%= p.label :LinkedIn, "LinkedIn" %>
         <%= p.text_field :linkedin, placeholder: "URL to your LinkedIn profile", class:'form-control' %>
         <br>
@@ -91,7 +91,7 @@
   <!-- </div> -->
 
 <!-- <div class="row rig"> -->
-  <div class="col-xs-6 left">
+  <div class="col-xs-6 left col-md-offset-1">
         <h4><%= p.label "Profile Type:" %></h4>
         Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
         Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
@@ -99,7 +99,7 @@
     <div class="col-xs-3 right">
       <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
     </div>
-    <div class="col-xs-3 right">
+    <div class="col-xs-2 right">
       <%= p.submit "Update", class: 'btn btn-primary' %>
     </div>
       <% end %>
@@ -123,8 +123,8 @@
       </div> -->
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
-          <div class='profile-pic center'>
-          <%= image_tag @profile.avatar.url(:medium) %>
+          <div class='profile-pic'>
+          <%= image_tag @profile.avatar.url(:medium), :class => "image_style" %>
           </div>
           <%else%>
           <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
@@ -142,7 +142,7 @@
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
     <div class='col-xs-9 float-left'> <!-- new div class -->
-      <div class="col-xs-3">
+      <div class="col-xs-3 col-md-offset-1">
         <%= p.label "First name" %>
         <%= p.text_field :firstname, placeholder: "First Name", class:'form-control', autofocus: true %>
         <br>
@@ -160,13 +160,13 @@
       <div class="col-xs-1">
         <%= p.label "State" %>
         <br>
-        <%= p.select :state, ['CA', 'NV'] %>
+        <%= p.select :state, ['AL','AK', 'AZ', 'AR', 'CA', 'CO', 'CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN', 'TX', 'UT','VT','VA','WA','WV','WI','WY'] %>
         <br>
       </div>
   <!-- </div> --><!-- end row -->
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
-    <div class="col-xs-6">
+    <div class="col-xs-5 col-md-offset-1">
         <%= p.label "Company:" %>
         <%= p.text_field :company, class:'form-control'%>
         <br>
@@ -177,7 +177,7 @@
         <br>
     </div>
 
-    <div class="col-xs-12">
+    <div class="col-xs-11 col-md-offset-1">
         <%= p.label "Criteria Question:" %>
         <%= p.text_field :criteria_question, class:'form-control' %>
       <br>
@@ -185,14 +185,14 @@
 
   <!-- </div> --><!-- end row -->
   <!-- <div class="row"> -->
-     <div class="col-xs-12">
+     <div class="col-xs-11 col-md-offset-1">
         <%= p.label "Ideal Candidate:" %>
         <%= p.text_area :skills, rows: 7, class:'form-control' %>
         <br>
      </div>
 
 
-     <div class="col-xs-6">
+     <div class="col-xs-5 col-md-offset-1">
         <%= p.label :LinkedIn, "LinkedIn" %>
         <%= p.text_field :linkedin, placeholder: "URL to your LinkedIn profile", class:'form-control' %>
         <br>
@@ -205,15 +205,15 @@
   <!-- </div> -->
 
 <!-- <div class="row rig"> -->
-  <div class="col-xs-6 left">
+  <div class="col-xs-6 left col-md-offset-1">
         <h4><%= p.label "Profile Type:" %></h4>
         Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
         Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
       </div>
-    <div class="col-xs-3 right">
+    <div class="col-xs-8 right">
       <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
     </div>
-    <div class="col-xs-3 right">
+    <div class="col-xs-4 right">
       <%= p.submit "Update", class: 'btn btn-primary' %>
     </div>
       <% end %>

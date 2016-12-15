@@ -8,6 +8,7 @@
       </div> -->
     <!-- </div> -->
 
+
   <div id="avatar">
             <%= link_to profile_path(current_user.profile) do %>
               <%= image_tag current_user.profile.avatar %>
@@ -177,36 +178,50 @@
 <% elsif current_user.profile.seeker == 'sourcer' %>
 
 <!-- show this view if profile is set to sourcer -->
+
+<div id="avatar">
+            <%= link_to profile_path(current_user.profile) do %>
+
+
+             <%= image_tag current_user.profile.avatar.url(:medium) %>
+
+
+            <% end %>
+
+
+            <h3><%= current_user.profile.firstname %> <%= current_user.profile.lastname %> | <%= current_user.profile.company %> Test Company</h3>
+
+  </div>
 <section>
   <!--<div class="jumbotron">
     <h1>Welcome Sourcer</h1>
   </div> -->
-  <div id="avatar">
-            <%= link_to profile_path(current_user.profile) do %>
-              <%= image_tag current_user.profile.avatar.url(:medium) %>
-            <% end %>
-            <center>
-            <%= current_user.profile.firstname %> <%= current_user.profile.lastname %>
-            <center>
-  </div>
+
   <div class="container">
     <!-- <div class="row"> -->
 
     <!-- </div> -->
     <div class="row">
+    <div class="thematic">
     <h1>Notifications</h1>
+    </div>
     <hr>
     <!-- show pending firendship where current user is under friend_id; this prevents users who sent the request from seeing their own request as pending and changing the confirmation status; Status should only be available to the the person recieving the request-->
     <% for friendship in Friendship.where(status: "pending").where('(friend_id=?) OR (user_id=?)', current_user.id, current_user.id) %>
     <% if friendship[:friend_id] == current_user.id %>
       <div class="row notifications">
-        <div class="col-xs-3 center" id="avatar">
+        <!-- <div class="col-xs-2">
+        </div> -->
+        <div class="col-xs-9 col-md-offset-1">
+        <div class="col-xs-3 center" id="avatarb">
           <%= link_to profile_path(friendship.user.profile) do %>
-            <%= image_tag friendship.user.profile.avatar.url(:medium) %>
+            <%= image_tag friendship.user.profile.avatar.url(:thumb) %>
           <% end %>
         </div>
         <div class="col-xs-7">
-          <h3><%=friendship.user.profile.full_name %> would like to connect</h3>
+          <br>
+          <h3><%=friendship.user.profile.full_name %></h3>
+          <h3> Requested Referral Interview </h3>
           <p class="timestamps"><%= time_ago_in_words (friendship.created_at) %> ago</p>
         <!-- *** TODO limit body to 4 lines of text with accordion to see more -->
           <!-- <p>Body of message</p> -->
@@ -219,8 +234,11 @@
           <%= link_to "View Request", friendship_path(friendship), :class =>"btn btn-primary center-block"  %>
          <br>
           <%= button_to "Decline Request", friendship, :class =>"btn btn-danger center-block", :method => :delete %>
+          <br>
+
         </div>
       </div>
+    </div>
 
     <%elsif friendship[:user_id] == current_user.id %>
 

@@ -51,6 +51,7 @@ font-size: 20pt;
 
 .navbar-header .navbar-brand {
 	color: #ffffff;
+
 }
 
 .navbar-header .navbar-brand:hover {
@@ -65,6 +66,8 @@ background-color: #ffffff;  //Sets background hover color on navbar
 .navbar-default {
 		background-color:#ff4056;
 }
+
+
 
 .toggle-button { background-color: white; margin: 5px 0; border-radius: 20px; border: 2px solid #D0D0D0; height: 24px; cursor: pointer; width: 50px; position: relative; display: inline-block; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
 .toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: white; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
@@ -134,6 +137,9 @@ a:hover, a:focus {
 .main-nav {
 	background-color: #F5F5F5;
 	text-align: center;
+	border: 1px solid black;
+  border-bottom-width: 3px;
+
 }
 
 #center-nav {
@@ -146,6 +152,7 @@ a:hover, a:focus {
 		color: black;
 		font-size: 16pt;
 		padding: 5px 25px 0px 25px;
+
 	}
 }
 
@@ -155,6 +162,7 @@ a:hover, a:focus {
 	border-bottom-color: #F5F5F5;
 	border-bottom-style: solid;
 	font-weight: 300;
+
 }
 
 #center-nav > li a:hover {
@@ -398,6 +406,7 @@ button:active {
   color: #ff4056;
 }
 
+
 .btn-danger:hover {
 	background-color: #ff4056;
 	border-color: #ff4056;
@@ -541,14 +550,33 @@ button:active {
 ////////// dashboard & message styles //////
 ///////////////////////////////////////////
 #avatar {
-	width: 200px;
-	height: 200px;
-	margin-top: 15px;
+
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+#avatarb {
+margin-top: 20px;
+padding-top: 10px;
+}
+
+.friendship_avatar {
+
+}
+
+hr {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.thematic {
+
+padding-bottom: 0;
 }
 
 .timestamps {
 	color: #9E9E9E;
-	font-size: 20pt;
+	font-size: 10pt;
 }
 
 .messages {

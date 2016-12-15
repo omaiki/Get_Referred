@@ -5,6 +5,45 @@
 	padding-top: 90px;
 }
 
+.image_style {
+	padding-right: 50px;
+}
+
+
+.btn-primary-b {
+	font-size: 11pt;
+	margin: 5px;
+	width: 120px;
+	text-align: center;
+	border-radius: 6px;
+	box-shadow: 1px 1px 1px #9E9E9E;
+	border:0.1em solid #ff4056;
+	background-color: #ff4056;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 25px;
+	padding-right: 25px;
+	font-weight: 300;
+  color: #ffffff;
+}
+
+.btn-danger-b {
+	font-size: 11pt;
+	margin: 5px;
+	width: 120px;
+	text-align: center;
+	border-radius: 6px;
+	border:0.1em solid #ff4056;
+	background-color: #ffffff;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 25px;
+	padding-right: 25px;
+	font-weight: 300;
+  color: #ff4056;
+}
+
+
 /////////////////////////////////////
 ////////// profile forms ///////////
 ///////////////////////////////////
@@ -53,15 +92,13 @@ margin-top: 20px;
 ////// search results /////// //////
 ///////////////////////////////////
 .table img {
-	border-radius: 100%;
-	width: 100px;
-	height: 100px;
+width: 100px;
+height: 100px;
+
 }
 
 .table > img, .thumbnail a > img {
-	border-radius: 100%;
-	width: 100px;
-	height: 100px;
+
 }
 
 th a {
@@ -101,12 +138,8 @@ td a:hover {
 	border-radius: 100%;
 }
 
-.btn {
-	font-size: 11pt;
-	text-align: center;
-	margin: 5px;
-	width: 120px;
-}
+
+
 
 #search-btn {
 	padding-right: 0px;
