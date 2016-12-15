@@ -19,10 +19,12 @@ render form with:
     <div class='col-xs-3 float-left'>
 
             <%= link_to profile_path(@friendship.friend.profile) do %>
+            <div class="image_style">
+            <%= image_tag @friendship.friend.profile.avatar.url(:medium) %>
+            </div>
             <center>
             <h5><p><%= @friendship.friend.profile.firstname %> <%= @friendship.friend.profile.lastname %></p> <%= @friendship.friend.profile.role%> at <%= @friendship.friend.profile.company %></h5>
             <center>
-            <%= image_tag @friendship.friend.profile.avatar.url(:medium) %>
 
             <% end %>
 
