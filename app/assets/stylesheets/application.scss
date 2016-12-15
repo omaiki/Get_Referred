@@ -550,14 +550,21 @@ button:active {
 }
 
 #avatarb {
-	width: 150px;
-	height: 200px;
-	margin-bottom: 15px;
+}
+
+hr {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.notifications {
+
+padding-bottom: 0;
 }
 
 .timestamps {
 	color: #9E9E9E;
-	font-size: 20pt;
+	font-size: 10pt;
 }
 
 .messages {
