@@ -130,6 +130,7 @@
           <%end%>
           <%= form_for @profile do |p| %>
          <div class='profile-pic-button center'>
+          <%= p.file_field :avatar %>
           <%= p.submit "Add Photo", class: 'btn btn-danger' %>
           </div>
           <!--<%= p.label "Image URL" %>
