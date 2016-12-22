@@ -123,7 +123,7 @@
       </div> -->
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
-          <div class='profile-pic'>
+          <div class='profile-pic center'>
           <%= image_tag @profile.avatar.url(:medium), :class => "image_style" %>
           </div>
           <%else%>
