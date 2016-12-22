@@ -96,10 +96,10 @@
         Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
         Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
       </div>
-    <div class="col-xs-3 right">
+    <div class="col-xs-8 right">
       <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
     </div>
-    <div class="col-xs-2 right">
+    <div class="col-xs-4 right">
       <%= p.submit "Update", class: 'btn btn-primary' %>
     </div>
       <% end %>
@@ -123,11 +123,12 @@
       </div> -->
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
-          <div class='profile-pic'>
+          <div class='profile-pic center'>
           <%= image_tag @profile.avatar.url(:medium), :class => "image_style" %>
           </div>
           <%else%>
           <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
+
           <h6>Please update your profile image.</h6>
           <%end%>
           <%= form_for @profile, html: { multipart: true } do |p| %>

@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20161125112534) do
     t.text     "work_history"
     t.text     "portfolio"
     t.text     "criteria_question"
+    t.text     "placeholder"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"

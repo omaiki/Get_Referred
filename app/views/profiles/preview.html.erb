@@ -1,7 +1,204 @@
-
-
 <!-- if current user is a candidate -->
 <% if current_user.profile.seeker == 'candidate' %>
+
+<section>
+
+  <div class="container">
+
+  <div class="row push-down">
+      <!-- <div class="col-xs-12">
+        <h2 class='center'>Edit Candidate Profile</h2>
+      </div> -->
+      <div class="col-xs-3 float-left">
+          <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
+          <div class='profile-pic center'>
+          <%= image_tag @profile.avatar.url(:medium) %>
+          </div>
+          <%else%>
+          <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
+          <h6>Please update your profile image.</h6>
+          <%end%>
+          <%= form_for @profile do |p| %>
+         <div class='profile-pic-button'>
+          <br>
+          <%= p.submit "Request Referral", class:"btn btn-primary btn-lg pull-right" %>
+          </div>
+          <!--<%= p.label "Image URL" %>
+         <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
+          <br> -->
+      </div>
+
+  <!-- <div class="row"> --> <!-- start remaining form fields -->
+    <div class='col-xs-9 float-left'> <!-- new div class -->
+
+      <div class="col-xs-11 col-md-offset-1">
+        <h1> <%= @profile.firstname %> <%= @profile.lastname %> | <%= @profile.company %></h1>
+        <br>
+        <br>
+      </div>
+
+      <div class="col-xs-5 left col-md-offset-1">
+        <%= p.label "Requires Link to Job Requisition: " %>
+       <input type="checkbox" class="js-switch" checked />
+       <!--  <div class="toggle-button"> -->
+        <br>
+        <!-- </div> -->
+      </div>
+
+
+      <div class="col-xs-6 left">
+        <%= p.label "Requires Link to Portfolio: " %>
+        <input type="checkbox" class="js-switch" checked />
+        <!-- <div class="toggle-button button"> -->
+        <br>
+        <!-- </div> -->
+
+      </div>
+
+      <br>
+      <div class="col-xs-2 col-md-offset-1">
+        <br>
+        <h4><%= p.label "Open to Referring:" %></h4>
+      </div>
+
+      <div class="col-xs-3">
+        <br>
+        <br>
+
+         <input type="checkbox" class="js-switch" checked />
+        <%= p.label :all_d, "All Departments" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :sales, "Sales/Customer Support" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :market, "Marketing/Advertising" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :hr, "Human Resources" %>
+        <br>
+
+      </div>
+
+      <div class="col-xs-3">
+        <br>
+        <br>
+      <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :dev, "Engineering/Software" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :design, "Product/Design" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :testing, "Testing/QA" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :r_d, "R&D" %>
+        <br>
+
+        <!-- Any Department
+        Sales/Customer Support
+        Marketing/Advertising
+        Human Resources/Talent Acquisition
+        R&D
+        Engineering/Software Development
+        Product/Design
+        Testing/QA
+        Operations/Administration
+        Finance/Accounting
+        Legal
+        Other -->
+
+
+      </div>
+
+      <div class="col-xs-3">
+        <br>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :operations, "Operations/Administration" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :finance, "Finance/Accounting" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :legal, "Legal" %>
+        <br>
+        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
+        <%= p.label :other, "Other" %>
+        <%= p.text_field :work_history,class:'form-control' %>
+
+
+      </div>
+
+  <!-- </div> --><!-- end row -->
+
+  <!-- <div class="row"> --> <!-- start remaining form fields -->
+
+
+
+
+  <!-- </div> --><!-- end row -->
+  <!-- <div class="row"> -->
+
+        <div class="col-xs-11 left col-md-offset-1">
+
+        <h4> Work History: </h4>
+
+        <!-- <h4><%= p.label "Email Alert Frequency:" %></h4>
+        Upon Request     <%= p.radio_button :seeker, "candidate", :value => "Upon Request" %> |
+        Daily    <%= p.radio_button :seeker, "sourcer", :value => "Daily" %> |
+        Weekly     <%= p.radio_button :seeker, "sourcer", :value => "Weekly" %> -->
+      </div>
+
+
+
+
+
+
+
+        <div class="col-xs-11 left col-md-offset-1">
+          <br>
+       <!--  <h4><%= p.label "Email Alert View:" %></h4>
+        Answer     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
+        Profile     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %> |
+        Portfolio     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %> -->
+      </div>
+
+
+
+
+
+
+     <div class="col-xs-6">
+
+     </div>
+     <div class="col-xs-6">
+
+     </div>
+  <!-- </div> -->
+
+<!-- <div class="row rig"> -->
+
+  <!--   <div class="col-xs-9 right">
+      <br>
+      <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
+    </div>
+    <div class="col-xs-3 right">
+      <br>
+      <%= p.submit "Update", class: 'btn btn-primary' %>
+    </div>
+      <% end %>
+  </div> -->
+
+<!-- </div> -->
+</div> <!-- new div  -->
+
+</div> <!-- end row push down -->
+</section>
+
+<!-- if current user is a sourcer -->
+<% elsif current_user.profile.seeker == 'sourcer' %>
 <section>
 
   <div class="container">
@@ -109,201 +306,6 @@
 </div> <!-- end row push down -->
 </section>
 
-<!-- if current user is a sourcer -->
-<% elsif current_user.profile.seeker == 'sourcer' %>
-<section>
-
-  <div class="container">
-
-  <div class="row push-down">
-      <!-- <div class="col-xs-12">
-        <h2 class='center'>Edit Candidate Profile</h2>
-      </div> -->
-      <div class="col-xs-3 float-left">
-          <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
-          <div class='profile-pic center'>
-          <%= image_tag @profile.avatar.url(:medium) %>
-          </div>
-          <%else%>
-          <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
-          <h6>Please update your profile image.</h6>
-          <%end%>
-          <%= form_for @profile do |p| %>
-         <div class='profile-pic-button center'>
-          <%= p.file_field :avatar %>
-          <%= p.submit "Add Photo", class: 'btn btn-danger' %>
-          </div>
-          <!--<%= p.label "Image URL" %>
-         <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
-          <br> -->
-      </div>
-
-  <!-- <div class="row"> --> <!-- start remaining form fields -->
-    <div class='col-xs-9 float-left'> <!-- new div class -->
-
-      <div class="col-xs-11 col-md-offset-1">
-        <%= p.label "Criteria Question:" %>
-        <%= p.text_field :criteria_question, class:'form-control' %>
-        <br>
-        <br>
-      </div>
-
-      <div class="col-xs-5 left col-md-offset-1">
-        <%= p.label "Require Link to Job Requisition: " %>
-       <input type="checkbox" class="js-switch" checked />
-       <!--  <div class="toggle-button"> -->
-        <br>
-        <!-- </div> -->
-      </div>
-
-
-      <div class="col-xs-6 left">
-        <%= p.label "Require Link to Portfolio: " %>
-        <input type="checkbox" class="js-switch" checked />
-        <!-- <div class="toggle-button button"> -->
-        <br>
-        <!-- </div> -->
-
-      </div>
-
-      <br>
-      <div class="col-xs-2 col-md-offset-1">
-        <br>
-        <h4><%= p.label "Open to Referring:" %></h4>
-      </div>
-
-      <div class="col-xs-3">
-        <br>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :all_d, "All Departments" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :sales, "Sales/Customer Support" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :market, "Marketing/Advertising" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :hr, "Human Resources" %>
-        <br>
-
-      </div>
-
-      <div class="col-xs-3">
-        <br>
-        <br>
-      <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :dev, "Engineering/Software" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :design, "Product/Design" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :testing, "Testing/QA" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :r_d, "R&D" %>
-        <br>
-
-        <!-- Any Department
-        Sales/Customer Support
-        Marketing/Advertising
-        Human Resources/Talent Acquisition
-        R&D
-        Engineering/Software Development
-        Product/Design
-        Testing/QA
-        Operations/Administration
-        Finance/Accounting
-        Legal
-        Other -->
-
-
-      </div>
-
-      <div class="col-xs-3">
-        <br>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :operations, "Operations/Administration" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :finance, "Finance/Accounting" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :legal, "Legal" %>
-        <br>
-        <%= p.check_box :image, :data => { :toggle => 'toggle' } %>
-        <%= p.label :other, "Other" %>
-        <%= p.text_field :work_history,class:'form-control' %>
-
-
-      </div>
-
-  <!-- </div> --><!-- end row -->
-
-  <!-- <div class="row"> --> <!-- start remaining form fields -->
-
-
-
-
-  <!-- </div> --><!-- end row -->
-  <!-- <div class="row"> -->
-
-        <div class="col-xs-11 left col-md-offset-1">
-          <br>
-        <h4><%= p.label "Email Alert Frequency:" %></h4>
-        Upon Request     <%= p.radio_button :seeker, "candidate", :value => "Upon Request" %> |
-        Daily    <%= p.radio_button :seeker, "sourcer", :value => "Daily" %> |
-        Weekly     <%= p.radio_button :seeker, "sourcer", :value => "Weekly" %>
-      </div>
-
-
-
-
-
-
-
-        <div class="col-xs-11 left col-md-offset-1">
-          <br>
-        <h4><%= p.label "Email Alert View:" %></h4>
-        Answer     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
-        Profile     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %> |
-        Portfolio     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
-      </div>
-
-
-
-
-
-
-     <div class="col-xs-6">
-
-     </div>
-     <div class="col-xs-6">
-
-     </div>
-  <!-- </div> -->
-
-<!-- <div class="row rig"> -->
-
-    <div class="col-xs-9 right">
-      <br>
-      <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
-    </div>
-    <div class="col-xs-3 right">
-      <br>
-      <%= p.submit "Update", class: 'btn btn-primary' %>
-    </div>
-      <% end %>
-  </div>
-
-<!-- </div> -->
-</div> <!-- new div  -->
-
-</div> <!-- end row push down -->
-</section>
 
 <!-- if current user has not identified as a sourcer or candidate -->
 <% else %>

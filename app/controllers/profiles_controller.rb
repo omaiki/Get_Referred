@@ -15,6 +15,19 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def preview
+     # @user = User.find(session[:user_id])
+    # @profile = @user.profile
+    p params
+    @messages = Message.all
+    @profile=Profile.find(params[:id])
+    @current_user = current_user
+    @friendships = Friendship.all
+    @profiles = Profile.all
+    @users = User.all
+    render :preview
+  end
+
   def show
     # @user = User.find(session[:user_id])
     # @profile = @user.profile
