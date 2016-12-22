@@ -71,7 +71,7 @@
                   </tr>
                     <td>
 
-                      <%= link_to profile_path(profile) do%>
+                      <%= link_to preview_profile_path(profile) do%>
                       <img class="welcome-icon" src="<%= profile.avatar.url(:thumb) %>" alt="Users icon"/>
 
                       <!-- friendship.user.profile.avatar.url(:thumb) -->
@@ -120,7 +120,7 @@
 
 
                     <td>
-                      <%= link_to "View Profile", profile_path(profile), class:"btn btn-danger-b search" %>
+                      <%= link_to "View Profile", preview_profile_path(profile), class:"btn btn-danger-b search" %>
                       <br>
                       <!-- here I need to link to profile path and get their criteria question -->
                       <%= link_to "Request Referral", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary-b search", id:'search-btn' %>
