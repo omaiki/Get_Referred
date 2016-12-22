@@ -72,7 +72,8 @@
                     <td>
 
                       <%= link_to preview_profile_path(profile) do%>
-                      <img class="welcome-icon" src="<%= profile.avatar.url(:thumb) %>" alt="Users icon"/>
+                      <!-- <img class="welcome-icon" src="<%= profile.avatar.url(:medium) %>"/> -->
+                      <%= image_tag profile.avatar.url(:medium) %>
 
                       <!-- friendship.user.profile.avatar.url(:thumb) -->
 
@@ -88,7 +89,7 @@
                     <td>
                       <%= link_to profile_path(profile) do%>
                       <%=profile.company%>
-                      <%= 'Company' %>
+
                       <% end %>
                     </td>
                     <td>

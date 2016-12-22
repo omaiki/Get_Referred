@@ -112,7 +112,7 @@
           <div class="col-xs-2 friendship-btn">
             <%= button_to "Message", new_message_path, :class =>"btn btn-primary center-block", :method => :get %>
           <br>
-            <%= link_to "View Profile", profile_path(friendship.user.profile), class:"btn btn-danger search" %>
+            <%= link_to "View Profile", preview_profile_path(friendship.user.profile), class:"btn btn-danger search" %>
           </div>
           <br>
           <br>
@@ -124,7 +124,7 @@
           <div class="row notifications">
           <div class="col-xs-9 col-md-offset-1">
           <div class="col-xs-3 center" id="avatarb">
-            <%= link_to profile_path(friendship.friend.profile) do %>
+            <%= link_to preview_profile_path(friendship.friend.profile) do %>
             <%= image_tag friendship.friend.profile.avatar.url(:thumb) %>
             <% end %>
           </div>
@@ -141,7 +141,7 @@
         <div class="col-xs-2 friendship-btn">
           <%= button_to "Message", new_message_path, :class =>"btn btn-primary center-block", :method => :get %>
          <br>
-          <%= link_to "View Profile", profile_path(friendship.friend.profile), class:"btn btn-danger search" %>
+          <%= link_to "View Profile", preview_profile_path(friendship.friend.profile), class:"btn btn-danger search" %>
           <br>
           <br>
         </div>
