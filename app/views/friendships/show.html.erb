@@ -41,21 +41,22 @@ render form with:
         <div>
          <!--  <label>Message:</label> -->
           <%= f.label :Message %>
-          <%= f.text_area :message, rows: 10, class:"form-control", placeholder: "Write your message here" %>
+          <%= f.text_area :message, rows: 10, class:"form-control", :readonly => true %>
+
 
           <!-- <label>Job Link:</label> -->
           <%= f.label :Job_Link %>
-          <%= f.text_field :link_role, class:"form-control", placeholder: "Link to Desired Role" %>
+          <%= f.text_field :link_role, class:"form-control", :readonly => true %>
 
           <!-- <label>Personal Website:</label> -->
           <%= f.label :Portfolio%>
-          <%= f.text_field :link_portfolio, class:"form-control", placeholder: "Link to Portfolio" %>
+          <%= f.text_field :link_portfolio, class:"form-control", :readonly => true %>
           <br>
 
           <label> Criteria Question: <%=@friendship.friend.profile.criteria_question %> </label>
 
           <% f.label :Answer %>
-          <%= f.text_area :answer, rows: 10, class:"form-control", placeholder: "Write your response here" %>
+          <%= f.text_area :answer, rows: 10, class:"form-control", :readonly => true %>
 
 
 
