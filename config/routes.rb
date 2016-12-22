@@ -16,7 +16,11 @@ Rails.application.routes.draw do
       put :double_update
     end
   end
-  resources :profiles
+  resources :profiles do
+    member do
+      get 'preview'
+    end
+  end
   resources :sessions
   resources :users
   resources :searched
