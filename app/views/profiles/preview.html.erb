@@ -21,8 +21,10 @@
           <%= form_for @profile do |p| %>
          <div class='profile-pic-button'>
           <br>
-          <%= p.submit "Request Referral", class:"btn btn-primary btn-lg pull-right" %>
+             <%= link_to "Request Referral", friendships_path(:friend_id => @profile.user), :method => :post, class:"btn btn-primary btn-lg pull-right", id:'search-btn' %>
           </div>
+
+
           <!--<%= p.label "Image URL" %>
          <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
           <br> -->
@@ -210,19 +212,14 @@
       <div class="col-xs-3 float-left">
           <% if current_user.profile.seeker == 'candidate' ||  current_user.profile.seeker == 'sourcer'%>
           <div class='profile-pic center'>
-          <%= image_tag @profile.image, class:"profile-image", id:"edit-image" %>
+          <%= image_tag @profile.avatar.url(:medium) %>
           </div>
           <%else%>
           <img class="welcome-icon" src="<%= asset_path( 'placeholder-user-photo.png' ) %>" alt="Users icon" width="100px" height="100px"/>
           <h6>Please update your profile image.</h6>
           <%end%>
           <%= form_for @profile do |p| %>
-         <div class='profile-pic-button center'>
-            <%= form_for @profile, html: {multipart: true} do |f| %>
-            <%= f.label :avatar %><br>
-            <%= f.file_field :avatar %>
-            <%= f.submit "Add Photo", class: 'btn btn-danger' %>
-            <% end %>
+         <div class='profile-pic-button'>
         </div>
           <!--<%= p.label "Image URL" %>
          <%= p.text_field :image, placeholder: "Find a picture you like, right click and hit copy image url", class:'form-control'%>
@@ -230,73 +227,50 @@
       </div>
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
-    <div class='col-xs-9 float-left'> <!-- new div class -->
-      <div class="col-xs-3">
-        <%= p.label "First name" %>
-        <%= p.text_field :firstname, placeholder: "First Name", class:'form-control', autofocus: true %>
+    <div class='col-xs-8  float-left'> <!-- new div class -->
+      <div class="col-xs-11 left col-md-offset-1">
+        <h1> <%= @profile.firstname %> <%= @profile.lastname %>   |   <%= @profile.city %>, <%= @profile.state %>  </h1>
         <br>
       </div>
-      <div class="col-xs-3">
-        <%= p.label "Last name" %>
-        <%= p.text_field :lastname, placeholder: "Last Name", class:'form-control' %>
-        <br>
+      <div class="col-xs-11 left col-md-offset-1">
+
       </div>
-      <div class="col-xs-4">
-        <%= p.label "City" %>
-        <%= p.text_field :city, placeholder: "City", class:'form-control'%>
-        <br>
-      </div>
-      <div class="col-xs-1">
-        <%= p.label "State" %>
-        <br>
-        <%= p.select :state, ['CA', 'NV'] %>
-        <br>
-      </div>
+
   <!-- </div> --><!-- end row -->
 
   <!-- <div class="row"> --> <!-- start remaining form fields -->
-    <div class="col-xs-6">
+    <div class="col-xs-5 col-md-offset-1">
         <%= p.label "Title" %>
-        <%= p.text_field :bio, class:'form-control'%>
+        <%= p.text_field :bio, class:'form-control', :readonly => true %>
         <br>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-5 col-md-offset-1">
         <%= p.label "Desired role" %>
-        <%= p.text_field :role, class:'form-control'%>
+        <%= p.text_field :role, class:'form-control', :readonly => true %>
         <br>
     </div>
 
   <!-- </div> --><!-- end row -->
   <!-- <div class="row"> -->
-     <div class="col-xs-12">
+     <div class="col-xs-11 col-md-offset-1">
         <%= p.label "Work history" %>
-        <%= p.text_area :skills, class:'form-control' %>
+        <%= p.text_area :skills, class:'form-control', :readonly => true %>
         <br>
      </div>
-     <div class="col-xs-6">
+     <div class="col-xs-5 col-md-offset-1">
         <%= p.label :LinkedIn, "LinkedIn" %>
-        <%= p.text_field :linkedin, placeholder: "URL to your LinkedIn profile", class:'form-control' %>
+        <%= p.text_field :linkedin, placeholder: "URL to your LinkedIn profile", class:'form-control', :readonly => true  %>
         <br>
      </div>
-     <div class="col-xs-6">
+     <div class="col-xs-5 col-md-offset-1">
         <%= p.label "Website" %>
-        <%= p.text_field :portfolio, placeholder: "URL to your personal website", class:'form-control' %>
+        <%= p.text_field :portfolio, placeholder: "URL to your personal website", class:'form-control', :readonly => true  %>
         <br>
      </div>
   <!-- </div> -->
 
 <!-- <div class="row rig"> -->
-  <div class="col-xs-6 left">
-        <h4><%= p.label "Profile Type:" %></h4>
-        Candidate     <%= p.radio_button :seeker, "candidate", :value => "candidate" %> |
-        Sourcer     <%= p.radio_button :seeker, "sourcer", :value => "sourcer" %>
-      </div>
-    <div class="col-xs-3 right">
-      <%= link_to "Cancel", profile_path, class: 'btn btn-cancel' %>
-    </div>
-    <div class="col-xs-3 right">
-      <%= p.submit "Update", class: 'btn btn-primary' %>
-    </div>
+
       <% end %>
   </div>
 
