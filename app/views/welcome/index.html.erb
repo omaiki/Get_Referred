@@ -22,7 +22,9 @@
           <% if logged_in? %>
           <a class="btn btn-primary" href="/dashboard/">Go to Dashboard</a>
           <% else %>
+
           <button data-toggle="modal" data-target="#createUser" class="btn btn-primary" id="sign-up">Sign-Up</button>
+
           <% end %>
         </div>
       </div>
@@ -73,6 +75,8 @@
               </div>
             <% end %>
 
+
+
             <div class="sign-up-shift">
 
               <%= f.label :email, style: 'float: left; text-align: right; width: 20%'  %>
@@ -91,8 +95,11 @@
 
 
 
+
         </div>
+
         <div class="modal-footer">
+
           <center>
               <%= f.submit "Create User", class: 'btn btn-primary' %>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -102,7 +109,9 @@
         <!-- <button class="btn btn-success"
             data-toggle="modal" data-target="#logUser" data-dismiss="modal">Log In</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
+
         </div>
+
       </div>
     </div>
   </div>
@@ -127,10 +136,12 @@
             <br>
 
             <div class="field">
+
               <center>
               <%= password_field_tag :password, nil, placeholder: 'password', style: 'width: 65%; margin-left: 10px; float: center; ' %>
               <br>
               </center>
+
             </div>
 
 
@@ -149,6 +160,28 @@
               <% end %>
             <!-- </div> -->
           <!-- <button class="btn btn-success"
+              data-toggle="modal" data-target="#createUser" data-dismiss="modal">Sign Up</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Heroku Demo Modal  -->
+
+  <div class="modal fade" id="betaUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <br><h4 class="modal-title" id="myModalLabel">Thank you for signing up!</h4>
+          <h3> We will reach out to you with more information in the upcoming future. </h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+         <!--  <button class="btn btn-success"
               data-toggle="modal" data-target="#createUser" data-dismiss="modal">Sign Up</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
         </div>
