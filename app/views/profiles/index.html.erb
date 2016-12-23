@@ -1,70 +1,135 @@
 <section>
   <div class="container">
-    <div class="row">
-      <div class="col-xs-3 center searchnav">
-        <h4>Search by Keyword</h4><br>
+
+    <div class="searchnav center">
         <%= form_tag profiles_path, :method => 'get', :id => "profiles_search" do %>
           <%= hidden_field_tag :direction, params[:direction] %>
           <%= hidden_field_tag :sort, params[:sort] %>
-
-          <p>
-            <%= text_field_tag :search, params[:search], placeholder: "Search Profiles", class: "form-group" %>
-          </p>
-          <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
-
+          <span>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Profiles", class: "form-group", :size => 155 %>
+          </span>
+          <%= submit_tag "Search", :name => nil, class: "btn btn-primary-b" %>
         <% end %>
+      </div>
+
+    <div class="row">
+
+      <div class="col-xs-3 center">
+
+
+
+
+  <div class="form-group col-lg-12">
+    <label><h4>Find Referrals</h4></label><br>
+    <select class="form-control" id="sel1">
+      <option value="jan">Company</option>
+      <option value="1">test company</option>
+    </select>
+    <br>
+    <select class="form-control" id="sel2">
+      <option value="">Location</option>
+      <option value="1">test location</option>
+    </select>
+    <br>
+
+  </div>
+
+
       </div>
       <div class="col-xs-9">
         <div id="profiles"><%= render 'profiles' %></div>
 
             <table class="table thumbnail left" width:"100%">
-              <tr>
+              <!-- <tr>
                 <th></th>
                 <th><%= sortable 'firstname' %></th>
                 <th><%= sortable 'lastname' %></th>
                 <th><%= sortable 'city' %></th>
                 <th><%= sortable 'role' %></th>
                 <th><%= sortable 'company' %></th>
-              </tr>
+              </tr> -->
               <% if current_user.profile.seeker == 'candidate' %>
                 <% for profile in @profiles.where(seeker: "sourcer") %>
                   <tr>
+                    <th>  </th>
+                    <th> Name </th>
+                    <th> Company </th>
+                    <th> Role </th>
+                    <th> City </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th><th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th><th></th>
+                  </tr>
                     <td>
-                      <%= link_to profile_path(profile) do%>
-                      <img src="<%=profile.image %>">
+
+                      <%= link_to preview_profile_path(profile) do%>
+                      <!-- <img class="welcome-icon" src="<%= profile.avatar.url(:medium) %>"/> -->
+                      <%= image_tag profile.avatar.url(:medium) %>
+
+                      <!-- friendship.user.profile.avatar.url(:thumb) -->
+
+                        <!-- <img src="<%= profile.avatar %>"> -->
+                        <!-- asset_path( 'placeholder-user-photo.png' )  -->
                       <% end %>
                     </td>
                     <td>
                       <%= link_to profile_path(profile) do%>
-                      <%=profile.firstname%>
+                      <%=profile.firstname%> <%=profile.lastname%>
                       <% end %>
                     </td>
                     <td>
                       <%= link_to profile_path(profile) do%>
-                      <%=profile.lastname%>
+                      <%=profile.company%>
+
                       <% end %>
+                    </td>
+                    <td>
+                      <%= link_to profile_path(profile) do%>
+                      <%=profile.role%>
+                      <%= 'Title' %>
+                      <% end %>
+
                     </td>
                     <td>
                       <%= link_to profile_path(profile) do%>
                       <%=profile.city%>
                       <% end %>
                     </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+
                     <td>
-                      <%= link_to profile_path(profile) do%>
-                      <%=profile.role%>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= link_to profile_path(profile) do%>
-                      <%=profile.company%>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= link_to "Connect", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary search" %>
+                      <%= link_to "View Profile", preview_profile_path(profile), class:"btn btn-danger-b search" %>
                       <br>
-                      <%= link_to "View Profile", profile_path(profile), class:"btn btn-danger search" %>
+                      <!-- here I need to link to profile path and get their criteria question -->
+                      <%= link_to "Request Referral", friendships_path(:friend_id => profile.user), :method => :post, class:"btn btn-primary-b search", id:'search-btn' %>
+
+
                     </td>
-                  </tr >
+
+                  </tr>
                 <%end%>
               <% elsif current_user.profile.seeker == 'sourcer' %>
                 <% for profile in @profiles.where(seeker: "candidate") %>

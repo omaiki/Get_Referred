@@ -7,12 +7,12 @@
       <div class="row">
         <div class="col-xs-6 middle-adjust center">
           <img class="welcome-icon" src="<%= asset_path( 'candidate-icon2.png' ) %>" alt="Candidate icon" width="72px" height="74px"/>
-          <h2 class="welcome-info">Get referred</h2>
+          <h2 class="welcome-info">Get Referred</h2>
           <p class="info-text" align="left">Request informational interviews with current employees at top companies open to referring great talent. </p>
         </div>
         <div class="col-xs-6 middle-line center">
           <img class="welcome-icon" src="<%= asset_path( 'sourcer-icon.png' ) %>" alt="Sourcer icon" width="72px" height="74px"/>
-          <h2 class="welcome-info">Find great talent to refer</h2>
+          <h2 class="welcome-info">Find Great Talent to Refer</h2>
           <p class="info-text" align="left">Set your personal referral criteria and wait for qualified candidates to come to you. Easily accept or deny requests and start collecting referral bonuses from your company. </p>
         </div>
       </div>
@@ -22,7 +22,9 @@
           <% if logged_in? %>
           <a class="btn btn-primary" href="/dashboard/">Go to Dashboard</a>
           <% else %>
-          <button data-toggle="modal" data-target="#createUser" id="sign-up">Request Invite</button>
+
+          <button data-toggle="modal" data-target="#createUser" class="btn btn-primary" id="sign-up">Sign-Up</button>
+
           <% end %>
         </div>
       </div>
@@ -36,17 +38,17 @@
     <div class="row">
       <div class="col-sm-4 center">
         <img class="welcome-icon" src="<%= asset_path( 'red-setting2.png' ) %>" alt="Settings icon" width="100px" height="100px"/>
-        <h2 class="welcome-info">Search for employees</h2>
+        <h2 class="welcome-info">Search for Employees</h2>
         <p class="info-text" align="justify">Search by company, location, and role to find the best opportunity.</p>
       </div>
       <div class="col-sm-4 center">
         <img class="welcome-icon" src="<%= asset_path( 'red-calendar2.png' ) %>" alt="Calendar icon" width="100px" height="100px"/>
-        <h2 class="welcome-info">Request a referral interview</h2>
+        <h2 class="welcome-info">Request a Referral Interview</h2>
         <p class="info-text" align="justify">Answer a few short questions and schedule a time to speak.</p>
       </div>
       <div class="col-sm-4 center">
         <img class="welcome-icon" src="<%= asset_path( 'red-users.png' ) %>" alt="Users icon" width="100px" height="100px"/>
-        <h2 class="welcome-info">Grow your network</h2>
+        <h2 class="welcome-info">Grow your Network</h2>
         <p class="info-text" align="justify">Make new connections, build relationships and find your dream job</p>
       </div>
     </div>
@@ -58,7 +60,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+          <h4 class="modal-title" id="myModalLabel">Sign-Up</h4>
         </div>
         <div class="modal-body">
           <%= form_for(@user) do |f| %>
@@ -73,20 +75,41 @@
               </div>
             <% end %>
 
-              <%= f.label :email %><br>
-              <%= f.text_field :email %>
-              </br>
-              <%= f.label :password %><br>
-              <%= f.password_field :password %>
-              </br>
-              </br>
-          <% end %>
+
+
+            <div class="sign-up-shift">
+
+              <%= f.label :email, style: 'float: left; text-align: right; width: 20%'  %>
+              <%= f.text_field :email, style: 'width: 65%; margin-left: 10px; float: left; '   %>
+              <br>
+              <br>
+              <%= f.label :password, style: 'float: left; text-align: right; width: 20%'  %>
+              <%= f.password_field :password, style: 'width: 65%; margin-left: 10px; float: left; ' %>
+
+
+             <!--  <%= f.label :password_confirmation, style: 'float: left; text-align: right; width: 20%' %>
+              <%= f.password_field :password_confirmation, style: 'width: 65%; margin-left: 10px; float: left; ' %> -->
+              <br>
+            </div>
+
+
+
+
+
         </div>
 
         <div class="modal-footer">
-        <button class="btn btn-success"
-            data-toggle="modal" data-target="#betaUser" data-dismiss="modal">Sign-Up</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+          <center>
+              <%= f.submit "Create User", class: 'btn btn-primary' %>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              </br>
+              <center>
+                <% end %>
+        <!-- <button class="btn btn-success"
+            data-toggle="modal" data-target="#logUser" data-dismiss="modal">Log In</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
+
         </div>
 
       </div>
@@ -102,23 +125,43 @@
           <h4 class="modal-title" id="myModalLabel">Log In</h4>
         </div>
         <div class="modal-body">
+
+
           <%= form_tag sessions_path, method: :post do %>
             <div class="field">
-              <%= text_field_tag :email, nil, placeholder: 'e-mail' %>
-            </div></br>
-            <div class="field">
-              <%= password_field_tag :password, nil, placeholder: 'password' %>
-            </div></br>
-            <div class="actions">
-              <%= button_tag "Log In", :class => 'submit-button'%>
-              <%= button_tag link_to "Cancel", root_path %>
+              <center>
+              <%= text_field_tag :email, nil, placeholder: 'e-mail', style: 'width: 65%; margin-left: 10px; float: center; ' %>
+            </center>
             </div>
-          <% end %>
+            <br>
+
+            <div class="field">
+
+              <center>
+              <%= password_field_tag :password, nil, placeholder: 'password', style: 'width: 65%; margin-left: 10px; float: center; ' %>
+              <br>
+              </center>
+
+            </div>
+
+
+
+
+
+
         </div>
         <div class="modal-footer">
-          <button class="btn btn-success"
+          <!-- <div class="actions"> -->
+            <center>
+              <%= button_tag link_to "Cancel", root_path %>
+
+              <%= button_tag "Log In", :class => 'submit-button'%>
+            <center>
+              <% end %>
+            <!-- </div> -->
+          <!-- <button class="btn btn-success"
               data-toggle="modal" data-target="#createUser" data-dismiss="modal">Sign Up</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
         </div>
       </div>
     </div>

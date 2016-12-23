@@ -1,34 +1,26 @@
-
 <section>
   <div class="container">
   <div class="col-xs-10 col-xs-offset-1">
-    <h3>Create a new message</h3>
-    <div class= "well clearfix">
-      <%= form_for @message do |f| %>
-        <div>
-          <label>Subject</label>
-          <%= f.text_field :title, class:"form-control", placeholder: "Subject" %>
-        </div>
-        <br>
-        <div>
-          <label>Message:</label>
-          <%= f.text_area :body, rows: 10, class:"form-control", placeholder: "Write your message here" %>
-          <label>Job Link</label>
-          <%= f.text_field :job_url, class:"form-control", placeholder: "link to job posting" %>
-          <label>Role</label>
-           <%= f.text_field :role, class:"form-control", placeholder: "job role title" %>
-          <%=f.hidden_field :user_id, :value => current_user.id %>
-          <%=f.hidden_field :author, :value => current_user.profile.full_name %>
-        </div>
-        <br>
-        <%= f.submit "Submit", class:"btn btn-primary btn-lg pull-right" %>
-        <% end %>
-      </div>
-    </div>
+
+
+<%= form_tag messages_path, method: :post do %>
+  <div class="form-group">
+    <%= label_tag 'message[subject]', 'Subject' %>
+    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
   </div>
 
-
-
+  <div class="form-group">
+    <%= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
   </div>
+
+  <div class="form-group">
+    <%= label_tag 'recipients', 'Choose recipients' %>
+    <%= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control chosen-it' %>
+  </div>
+
+  <%= submit_tag 'Send', class: 'btn btn-primary' %>
+<% end %>
+</div>
+</div>
 </section>
-

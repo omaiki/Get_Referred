@@ -1,0 +1,94 @@
+
+<!-- Change friendships model to have user_id, friend_id, message, answer, role_link, portfolio_link
+
+when user clicks friendship, render friendship_new:
+render form with:
+- user_id
+- friend_id
+- blank message field
+- blank role_link field
+- blank portfolio_link field
+- friend.profile.criteria_question
+- blank answer field -->
+
+
+<section>
+  <div class="container">
+    <div class="row">
+  <!-- <div class="col-xs-2 float-left"> -->
+    <div class='col-xs-3 float-left'>
+
+            <%= link_to profile_path(@friendship.friend.profile) do %>
+            <div class="image_style">
+            <%= image_tag @friendship.user.profile.avatar.url(:medium) %>
+            </div>
+
+            <h4><%= @friendship.user.profile.firstname %> <%= @friendship.user.profile.lastname %> <%= @friendship.friend.profile.role%> | <%= @friendship.friend.profile.company %> Role </h4>
+
+
+            <% end %>
+
+
+
+    </div>
+  <!-- </div> -->
+  <div class="col-xs-9 float-left">
+    <h3>Referral Interview Request</h3>
+    <div class= "well clearfix">
+      <%= form_for @friendship do |f| %>
+
+        <br>
+        <div>
+         <!--  <label>Message:</label> -->
+          <%= f.label :Message %>
+          <%= f.text_area :message, rows: 10, class:"form-control", :readonly => true %>
+
+
+          <!-- <label>Job Link:</label> -->
+          <%= f.label :Job_Link %>
+          <%= f.text_field :link_role, class:"form-control", :readonly => true %>
+
+          <!-- <label>Personal Website:</label> -->
+          <%= f.label :Portfolio%>
+          <%= f.text_field :link_portfolio, class:"form-control", :readonly => true %>
+          <br>
+
+          <label> Criteria Question: <%=@friendship.friend.profile.criteria_question %> </label>
+
+          <% f.label :Answer %>
+          <%= f.text_area :answer, rows: 10, class:"form-control", :readonly => true %>
+
+
+
+        </div>
+        <!-- <label>Role</label>
+          <%=f.hidden_field :user_id, :value => current_user.id %>
+          <%=f.hidden_field :author, :value => current_user.profile.full_name %>
+        <div> -->
+
+        </div>
+        <br>
+
+         <%= f.submit "Accept Request",  class:"btn btn-primary btn-lg pull-right" %>
+
+          <!-- same as previous dashboard - worked but accepts friendship, this is last step -->
+        <!--<%= button_to "Request Referral", @friendship, :class =>"btn btn-primary pull-right", :method => :put %> -->
+
+       <!--  controller action
+        friendships#double_update
+
+        verb
+        patch
+
+        prefix
+        double_update_friendships -->
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  </div><!--  end row -->
+  </div>
+</section>

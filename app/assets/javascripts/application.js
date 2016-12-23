@@ -16,6 +16,9 @@
 //= require bootstrap-sprockets
 //= require bootstrap-material-design
 //= require_tree .
+//= require jquery.turbolinks
+//= require chosen-jquery
+//= require messages
 
 
 $(function() {
@@ -39,3 +42,13 @@ $('.btn-primary').click(function() {
 $('.btn-danger').click(function() {
   $(this).toggleClass('active');
 });
+
+// toggling classes for toggle-button
+$(document).on('click', '.toggle-button', function() {
+    $(this).toggleClass('toggle-button-selected');
+});
+
+$(document).on('click', '.toggle-button-button', function() {
+    $(this).toggleClass('toggle-button-selected-button');
+});
+
