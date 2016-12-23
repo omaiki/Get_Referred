@@ -73,7 +73,7 @@
               </div>
             <% end %>
 
-            <div class="sign-up-shift", style: 'margin-left: 50px'>
+            <div class="sign-up-shift">
 
               <%= f.label :email, style: 'float: left; text-align: right; width: 20%'  %>
               <%= f.text_field :email, style: 'width: 65%; margin-left: 10px; float: left; '   %>
@@ -116,23 +116,41 @@
           <h4 class="modal-title" id="myModalLabel">Log In</h4>
         </div>
         <div class="modal-body">
+
+
           <%= form_tag sessions_path, method: :post do %>
             <div class="field">
-              <%= text_field_tag :email, nil, placeholder: 'e-mail' %>
-            </div></br>
-            <div class="field">
-              <%= password_field_tag :password, nil, placeholder: 'password' %>
-            </div></br>
-            <div class="actions">
-              <%= button_tag link_to "Cancel", root_path %>
-              <%= button_tag "Log In", :class => 'submit-button'%>
+              <center>
+              <%= text_field_tag :email, nil, placeholder: 'e-mail', style: 'width: 65%; margin-left: 10px; float: center; ' %>
+            </center>
             </div>
-          <% end %>
+            <br>
+
+            <div class="field">
+              <center>
+              <%= password_field_tag :password, nil, placeholder: 'password', style: 'width: 65%; margin-left: 10px; float: center; ' %>
+              <br>
+              </center>
+            </div>
+
+
+
+
+
+
         </div>
         <div class="modal-footer">
-          <button class="btn btn-success"
+          <!-- <div class="actions"> -->
+            <center>
+              <%= button_tag link_to "Cancel", root_path %>
+
+              <%= button_tag "Log In", :class => 'submit-button'%>
+            <center>
+              <% end %>
+            <!-- </div> -->
+          <!-- <button class="btn btn-success"
               data-toggle="modal" data-target="#createUser" data-dismiss="modal">Sign Up</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
         </div>
       </div>
     </div>
