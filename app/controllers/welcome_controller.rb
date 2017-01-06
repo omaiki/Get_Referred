@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       login(user)
-      redirect_to dashboard_index_path
+      redirect_to profile
     else
       flash.now.alert = "Email or password not recognized"
     end
